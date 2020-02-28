@@ -1,12 +1,81 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstateManager.Models
 {
-    class Transaction
+    class Transaction : ViewModels.BaseNotifyPropertyChanged
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty(value); }
+        }
+
+        public int Reference
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty(value); }
+        }
+
+        [ForeignKey(nameof(Reference))]
+        public Estate Estate
+        {
+            get { return GetProperty<Estate>(); }
+            set { SetProperty(value); }
+        }
+
+        public string Title
+        {
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
+        }
+
+        public string Description
+        {
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
+        }
+
+        public DateTime PublicationDate
+        {
+            get { return GetProperty<DateTime>(); }
+            set { SetProperty(value); }
+        }
+
+        public DateTime TransactionDate
+        {
+            get { return GetProperty<DateTime>(); }
+            set { SetProperty(value); }
+        }
+
+        public TypeTransaction Type
+        {
+            get { return GetProperty<TypeTransaction>(); }
+            set { SetProperty(value); }
+        }
+
+        public double Price
+        {
+            get { return GetProperty<double>(); }
+            set { SetProperty(value); }
+        }
+
+        public double Fees
+        {
+            get { return GetProperty<double>(); }
+            set { SetProperty(value); }
+        }
+
+
+        public int leNom
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty<int>(value); }
+
+        }
+
+
     }
 }

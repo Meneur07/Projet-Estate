@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Models
 {
-    enum TypeEstate
+    enum TypeTransaction
     {
-        House,
-        Flat,
-        Garage,
-        Field,
-        CommercialLocal
+        Sale, Rent
     }
 }
