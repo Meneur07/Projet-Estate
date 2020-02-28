@@ -8,5 +8,6 @@ namespace EstateManager.Models
 {
     class Estate
     {
+
     }
 }
