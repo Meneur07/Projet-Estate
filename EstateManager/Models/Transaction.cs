@@ -68,14 +68,31 @@ namespace EstateManager.Models
             set { SetProperty(value); }
         }
 
-
-        public int leNom
+        public int OwnerId
         {
             get { return GetProperty<int>(); }
-            set { SetProperty<int>(value); }
-
+            set { SetProperty(value); }
         }
 
+        [ForeignKey(nameof(OwnerId))]
+        public Person Owner
+        {
+            get { return GetProperty<Person>(); }
+            set { SetProperty(value); }
+        }
+
+        public int ClientId
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty(value); }
+        }
+
+        [ForeignKey(nameof(ClientId))]
+        public Person Client
+        {
+            get { return GetProperty<Person>(); }
+            set { SetProperty(value); }
+        }
 
     }
 }
