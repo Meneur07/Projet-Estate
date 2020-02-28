@@ -10,6 +10,7 @@ namespace EstateManager.Models
 {
     class Estate : ViewModels.BaseNotifyPropertyChanged
     {
+<<<<<<< HEAD
         [Key]
         int Reference;
 
@@ -85,5 +86,8 @@ namespace EstateManager.Models
 
         //TODO Ajouter reference à Commercial
 
+=======
+        
+>>>>>>> 937ee2891d2cb92f48fb650d89fa21c87187a6e0
     }
 }
