@@ -14,4 +14,10 @@ namespace EstateManager.Models
         Field,
         CommercialLocal
     }
+
+    enum TypeTransaction
+    {
+        Sale,
+        Rent
+    }
 }
