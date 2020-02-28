@@ -4,14 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstateManager.Models
 {
-    class Photo
+    class Photo : ViewModels.BaseNotifyPropertyChanged
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int Id { get {return GetProperty<int>(); }
+                        set { SetProperty(value); } }
 
-        public byte[] Image { get; set; }
+        public byte[] Image { get { return GetProperty<byte[]>(); }
+                              set { SetProperty(value); } }
         
-        public DateTime ShootingDate { get; set; }
+        public DateTime ShootingDate { get { return GetProperty<DateTime>(); }
+                                       set { SetProperty(value); } }
 
         public int Reference { get; set; }
 
