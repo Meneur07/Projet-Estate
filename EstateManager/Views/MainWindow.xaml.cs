@@ -23,6 +23,7 @@ namespace EstateManager.Views
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }

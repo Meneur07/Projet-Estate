@@ -13,5 +13,6 @@ namespace EstateManager
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }
