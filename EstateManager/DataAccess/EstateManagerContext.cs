@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Environment;
 
-namespace EstateManager.ViewModels
+namespace EstateManager.DataAccess
 {
-    class EstateManagerContext : DbContext
+    public class EstateManagerContext : DbContext
     {
 
         private static EstateManagerContext _context = null;
@@ -47,12 +47,13 @@ namespace EstateManager.ViewModels
         {
             DatabasePath = dbPath;
         }
-
+        internal EstateManagerContext(DbContextOptions options) : base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder); optionsBuilder.EnableSensitiveDataLogging(); optionsBuilder.UseSqlite($"Filename ={DatabasePath}"); 
         }
 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Models.TagEstate>().HasKey(x=> new { x.EstateReference, x.TagId });

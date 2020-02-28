@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Models
 {
-    class Tag
+    public class Tag
     {
 
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Models
 {
-    class TagEstate : ViewModels.BaseNotifyPropertyChanged
+    public class TagEstate : ViewModels.BaseNotifyPropertyChanged
     {
 
        

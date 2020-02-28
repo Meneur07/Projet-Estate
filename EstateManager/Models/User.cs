@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Models
 {
-    class User
+    public class User
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Models
 {
-    enum TypeEstate
+    public enum TypeEstate
     {
         House,
         Flat,
@@ -15,7 +15,7 @@ namespace EstateManager.Models
         CommercialLocal
     }
 
-    enum TypeTransaction
+    public enum TypeTransaction
     {
         Sale,
         Rent

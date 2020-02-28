@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstateManager.Models
 {
-    class Transaction : ViewModels.BaseNotifyPropertyChanged
+    public class Transaction : ViewModels.BaseNotifyPropertyChanged
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id

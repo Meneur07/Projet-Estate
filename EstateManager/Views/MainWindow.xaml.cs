@@ -18,6 +18,8 @@ namespace EstateManager.Views
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
+    /// 
+    // Dans la console nuget : Add-Migration Initial
     public partial class MainWindow : Window
     {
         public MainWindow()

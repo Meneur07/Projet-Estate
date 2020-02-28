@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Models
 {
-    class Person : ViewModels.BaseNotifyPropertyChanged
+    public class Person : ViewModels.BaseNotifyPropertyChanged
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
