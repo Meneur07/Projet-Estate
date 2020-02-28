@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace EstateManager.Models
 {
-<<<<<<< HEAD
-    public class Tag
-=======
-    class Tag : ViewModels.BaseNotifyPropertyChanged
->>>>>>> a3b1acba4434c94d5c5ff548e9a7580731a9d1af
+    public class Tag : ViewModels.BaseNotifyPropertyChanged
+
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id

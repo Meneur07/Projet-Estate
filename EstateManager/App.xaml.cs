@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-﻿using EstateManager.DataAccess;
 
-=======
-﻿using EstateManager.ViewModels;
->>>>>>> a3b1acba4434c94d5c5ff548e9a7580731a9d1af
+using EstateManager.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
