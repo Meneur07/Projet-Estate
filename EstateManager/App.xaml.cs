@@ -13,6 +13,10 @@ namespace EstateManager
     /// </summary>
     public partial class App : Application
     {
-        
+        protected async override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            await EstateManagerContext.InitializeAsync();
+        }
     }
 }
