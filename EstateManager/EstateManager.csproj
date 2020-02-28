@@ -178,6 +178,12 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\GenericDelegateCommand.cs" />
     <Compile Include="Models\Estate.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\TagEstate.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TypeEstate.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\BaseNotifyPropertyChanged.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
