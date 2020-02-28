@@ -11,7 +11,13 @@ namespace EstateManager.Models
     class Person : ViewModels.BaseNotifyPropertyChanged
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        int Id;
+
+        public int Id
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty<int>(value); }
+        }
+
 
 
         public string LastName

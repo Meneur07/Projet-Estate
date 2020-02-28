@@ -12,15 +12,19 @@ namespace EstateManager.Models
     {
 
         [Key]
-        int Reference;
+
+        public int Reference
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty<int>(value); }
+        }
+
 
         public TypeEstate Type
         {
             get { return GetProperty<TypeEstate>(); }
             set { SetProperty<TypeEstate>(value); }
         }
-
-
 
         public int FloorCount
         {

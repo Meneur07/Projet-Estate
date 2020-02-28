@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Prop Base</Title>
+      <Author>Cyril Gomes</Author>
+      <Description>Ajoute un prop avec la Base property changed</Description>
+      <Shortcut>propbase</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public $type$ $name$
+        {
+            get { return GetProperty<$type$>(); }
+            set { SetProperty<$type$>(value); }
+        }
+        ]]>
+
+      </Code>
+
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Le type de votre propriété</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Le nom de votre propriété</ToolTip>
+          <Default>leNom</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
