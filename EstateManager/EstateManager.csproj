@@ -178,6 +178,11 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\GenericDelegateCommand.cs" />
     <Compile Include="DataAccess\EstateDbContextFactory.cs" />
+    <Compile Include="Migrations\20200311080619_init.cs" />
+    <Compile Include="Migrations\20200311080619_init.designer.cs">
+      <DependentUpon>20200311080619_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Estate.cs" />
     <Compile Include="Models\Person.cs" />

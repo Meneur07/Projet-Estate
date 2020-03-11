@@ -88,7 +88,27 @@ namespace EstateManager.Models
             set { SetProperty<int>(value); }
         }
 
-        //TODO Ajouter reference à Commercial
+
+        public int CommercialId
+        {
+            get { return GetProperty<int>(); }
+            set
+            {
+                SetProperty(value);
+            }
+        }
+
+
+        [ForeignKey(nameof(CommercialId))]
+        public Person Person
+        {
+            get { return GetProperty<Person>(); }
+            set
+            {
+                SetProperty(value);
+            }
+        }
+
 
     }
 }

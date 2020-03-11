@@ -19,6 +19,8 @@ namespace EstateManager.Models
         }
 
 
+        
+
         public string Label
         {
             get { return GetProperty<string>(); }
