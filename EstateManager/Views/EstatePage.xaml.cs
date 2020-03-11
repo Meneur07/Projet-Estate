@@ -16,15 +16,12 @@ using System.Windows.Shapes;
 namespace EstateManager.Views
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour EstatePage.xaml
     /// </summary>
-    /// 
-    // Dans la console nuget : Add-Migration Initial
-    public partial class MainWindow : Window
+    public partial class EstatePage : Page
     {
-        public MainWindow()
+        public EstatePage()
         {
-            DataContext = new ViewModels.MainViewModel();
             InitializeComponent();
         }
     }

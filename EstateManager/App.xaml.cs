@@ -1,5 +1,6 @@
 
 using EstateManager.DataAccess;
+using EstateManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

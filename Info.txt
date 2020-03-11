@@ -1,0 +1,1 @@
+Code-behind : juste avant InitializeComponent(), faire new EstateManagerContext(); et le mettre en dataContext de la fenetre
