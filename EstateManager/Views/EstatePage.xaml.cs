@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstateManager.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace EstateManager.Views
     {
         public EstatePage()
         {
+            DataContext = new EstateViewModel();
             InitializeComponent();
         }
     }
