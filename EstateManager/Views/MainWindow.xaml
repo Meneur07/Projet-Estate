@@ -5,26 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EstateManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MinHeight="200" MinWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.75*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="339*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Fill="#1ABC9C"/>
-        <Frame Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Content="{Binding Path=ActualPage}" NavigationUIVisibility="Hidden"/>
-        <Button Grid.Row="0" Grid.Column="0" Content="Statistics" Command="{Binding Path=StatCommand}"/>
-        <Button Grid.Row="1" Grid.Column="0" Content="Estates" Command="{Binding Path=EstateCommand}"/>
-        <Button Grid.Row="2" Grid.Column="0" Content="Clients" Command="{Binding Path=ClientCommand}"/>
-        <Button Grid.Row="3" Grid.Column="0" Content="Appointments" Command="{Binding Path=AppointmentCommand}"/>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Fill="#1ABC9C"/>
+        <Frame Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Content="{Binding Path=ActualPage}" NavigationUIVisibility="Hidden" Source="StatPage.xaml"/>
+        <Button Grid.Row="1" Grid.Column="0" Content="Statistics" Command="{Binding Path=StatCommand}" Style="{StaticResource NavButton}"/>
+        <Button Grid.Row="2" Grid.Column="0" Content="Estates" Command="{Binding Path=EstateCommand}" Style="{StaticResource NavButton}"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="Clients" Command="{Binding Path=ClientCommand}" Style="{StaticResource NavButton}"/>
+        <Button Grid.Row="4" Grid.Column="0" Content="Appointments" Command="{Binding Path=AppointmentCommand}" Style="{StaticResource NavButton}"/>
 
 
     </Grid>
