@@ -12,7 +12,6 @@ namespace EstateManager.Models
     {
 
         [Key]
-
         public int Reference
         {
             get { return GetProperty<int>(); }
@@ -31,8 +30,6 @@ namespace EstateManager.Models
             get { return GetProperty<int>(); }
             set { SetProperty<int>(value); }
         }
-
-        private int _bathroomCount;
 
         public int BathroomCount
         {

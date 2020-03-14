@@ -14,7 +14,7 @@ namespace EstateManager.DataAccess
 
         private static EstateManagerContext _context = null;
 
-        private static EstateManagerContext Current
+        public static EstateManagerContext Current
         {
             get
             {

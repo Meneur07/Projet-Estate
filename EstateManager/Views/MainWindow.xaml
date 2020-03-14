@@ -27,6 +27,5 @@
         <Button Grid.Row="3" Grid.Column="0" Content="Clients" Command="{Binding Path=ClientCommand}" Style="{StaticResource NavButton}"/>
         <Button Grid.Row="4" Grid.Column="0" Content="Appointments" Command="{Binding Path=AppointmentCommand}" Style="{StaticResource NavButton}"/>
 
-
     </Grid>
 </Window>
