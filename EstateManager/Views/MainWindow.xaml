@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EstateManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinHeight="200" MinWidth="600">
+        Title="Estate Manager" Height="450" Width="800" MinHeight="200" MinWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.75*"/>

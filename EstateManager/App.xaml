@@ -43,8 +43,34 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="ItemTemplate">
                 <Setter.Value>
+                    <!-- Le DataContext devient Transaction-->
                     <DataTemplate>
-                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Estate.Picture}" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0"/>
+                            <TextBlock Text="{Binding Estate.Type}" Grid.Column="1" Grid.Row="0"/>
+                            <TextBlock Text=" to " Grid.Column="2" Grid.Row="0"/>
+                            <TextBlock Text="{Binding Type}" Grid.Column="3" Grid.Row="0"/>
+
+                            <Button Content="Del." Grid.Row="0" Grid.Column="4"/>
+                            <Button Content="Mod." Grid.Row="0" Grid.Column="5"/>
+                            <TextBlock Text="{Binding Estate.City}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5"/>
+                            <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5"/>
+                            <TextBlock Text="{Binding Description}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5"/>
+                        </Grid>
                     </DataTemplate>
                 </Setter.Value>
             </Setter>

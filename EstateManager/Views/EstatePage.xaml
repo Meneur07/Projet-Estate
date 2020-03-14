@@ -28,7 +28,5 @@
         <Button Content="Add" Grid.Row="0" Grid.Column="4" Style="{StaticResource EstateButton}" Command="{Binding AddCommand}"/>
         <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}"/>
 
-
-
     </Grid>
 </Page>

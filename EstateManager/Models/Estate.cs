@@ -25,6 +25,14 @@ namespace EstateManager.Models
             set { SetProperty<TypeEstate>(value); }
         }
 
+
+        public byte[] Picture
+        {
+            get { return GetProperty<byte[]>(); }
+            set { SetProperty<byte[]>(value); }
+        }
+
+
         public int FloorCount
         {
             get { return GetProperty<int>(); }
