@@ -28,7 +28,8 @@ namespace EstateManager.ViewModels
 
         void clickAdd()
         {
-            MessageBox.Show("ClickAdd");
+            var windowAdd = new Views.AddTransaction();
+            windowAdd.ShowDialog();
         }
     }
 }

@@ -46,9 +46,6 @@ namespace EstateManager.Migrations
                     b.Property<int>("FloorNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<byte[]>("Picture")
-                        .HasColumnType("BLOB");
-
                     b.Property<float>("Surface")
                         .HasColumnType("REAL");
 

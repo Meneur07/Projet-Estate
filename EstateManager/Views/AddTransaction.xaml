@@ -1,0 +1,61 @@
+﻿<Window x:Class="EstateManager.Views.AddTransaction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EstateManager.Views"
+        mc:Ignorable="d"
+        Title="Add a transaction" Height="700" Width="800" MinHeight="700" MinWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        
+        <TextBlock Text="toBindAvecReference" Grid.Row="0" Grid.Column="0"/>
+        <TextBox Text="toBindAvecTitle" Grid.Row="1" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecDescription" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecPubDate" Grid.Row="3" Style="{StaticResource CustomTextField}"/> <!--Si possible remplacer avec une datePicker comme sur Android -->
+        <TextBox Text="toBindAvecTransacDate" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
+        <ComboBox Grid.Row="5" Style="{StaticResource CustomComboBox}"/> <!-- ItemsSource="toBindAvecEnumTypeTransaction" -->
+        <TextBox Text="toBindAvecPrice" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecFees" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecPropId" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecCliId" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
+        <Image Grid.Row="10" Grid.RowSpan="2" Stretch="Uniform"/> <!-- Afficher l'image qui est choisie dans l'explorateur de fichiers-->
+        <Button Grid.Row="12" Content="Add this transaction" Style="{StaticResource CustomButton}"/>
+
+        <Rectangle Grid.Column="1" Grid.RowSpan="13" Fill="Black"/>
+
+        <TextBox Text="toBindAvecReference" Grid.Column="2" Grid.Row="0" Style="{StaticResource CustomTextField}"/>
+        <ComboBox Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomComboBox}"/> <!-- ItemsSource="toBindAvecEnumTypeEstates" -->
+        <Button Grid.Column="2" Grid.Row="2" Content="Pick Image" Style="{StaticResource CustomButton}"/> <!-- Start explo fichiers pour choisir image-->
+        <TextBox Text="toBindAvecFloorCount" Grid.Column="2" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecBathroomCount" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecSurface" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecAddress" Grid.Column="2" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecZipCode" Grid.Column="2" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecCity" Grid.Column="2" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecFloorNumber" Grid.Column="2" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecCarbonFootPrint" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecEnergeticPerf" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
+        <TextBox Text="toBindAvecComercialId" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
+    </Grid>
+</Window>
