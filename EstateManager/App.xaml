@@ -2,6 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:EstateManager"
+             xmlns:nsEnums="clr-namespace:EstateManager.Models"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <Style x:Key="NavButton" TargetType="Button">
@@ -90,6 +92,18 @@
             <Setter Property="Margin" Value="2"/>
             <Setter Property="BorderThickness" Value="0.5"/>
         </Style>
+
+        <ObjectDataProvider x:Key="TypesEstate" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="nsEnums:TypeEstate"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="TypesTransaction" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="nsEnums:TypeTransaction"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
 
     </Application.Resources>
 </Application>

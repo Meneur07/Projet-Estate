@@ -34,7 +34,7 @@
         <TextBox Text="toBindAvecDescription" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
         <TextBox Text="toBindAvecPubDate" Grid.Row="3" Style="{StaticResource CustomTextField}"/> <!--Si possible remplacer avec une datePicker comme sur Android -->
         <TextBox Text="toBindAvecTransacDate" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
-        <ComboBox Grid.Row="5" Style="{StaticResource CustomComboBox}"/> <!-- ItemsSource="toBindAvecEnumTypeTransaction" -->
+        <ComboBox Grid.Row="5" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}"/>
         <TextBox Text="toBindAvecPrice" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
         <TextBox Text="toBindAvecFees" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
         <TextBox Text="toBindAvecPropId" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
@@ -45,7 +45,7 @@
         <Rectangle Grid.Column="1" Grid.RowSpan="13" Fill="Black"/>
 
         <TextBox Text="toBindAvecReference" Grid.Column="2" Grid.Row="0" Style="{StaticResource CustomTextField}"/>
-        <ComboBox Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomComboBox}"/> <!-- ItemsSource="toBindAvecEnumTypeEstates" -->
+        <ComboBox Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}"/>
         <Button Grid.Column="2" Grid.Row="2" Content="Pick Image" Style="{StaticResource CustomButton}"/> <!-- Start explo fichiers pour choisir image-->
         <TextBox Text="toBindAvecFloorCount" Grid.Column="2" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
         <TextBox Text="toBindAvecBathroomCount" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
