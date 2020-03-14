@@ -41,6 +41,7 @@
 
         <Style x:Key="ListEstates" TargetType="ListBox">
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ItemsSource" Value="{Binding Estates}"/>
             <Setter Property="ItemTemplate">
                 <Setter.Value>
                     <!-- Le DataContext devient Transaction-->
@@ -74,7 +75,7 @@
                     </DataTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="ItemsSource" Value="{Binding Estates}"/>
+            
         </Style>
 
     </Application.Resources>
