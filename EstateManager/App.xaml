@@ -7,7 +7,7 @@
         <Style x:Key="NavButton" TargetType="Button">
             <Style.Triggers>
                 <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="Background" Value="#1A237E"/>
+                    <Setter Property="Background" Value="#34495E"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="White"/>
