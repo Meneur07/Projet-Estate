@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -42,13 +43,20 @@ namespace EstateManager.Views
 
         private void Maximize(object sender, MouseButtonEventArgs e)
         {
-            if(this.WindowState == WindowState.Normal)
+            if(Width == Screen.PrimaryScreen.WorkingArea.Width && Height == Screen.PrimaryScreen.WorkingArea.Height)
             {
-                this.WindowState = WindowState.Maximized;
+
+                Width = 800;
+                Height = 500;
             }
             else
             {
-                this.WindowState = WindowState.Normal;
+
+
+                Left = Top = 0;
+
+                Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Height = Screen.PrimaryScreen.WorkingArea.Height;
             }
             
         }
