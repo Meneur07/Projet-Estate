@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         Title="Estate Manager" Height="500" Width="800" MinHeight="200" MinWidth="1000"
         WindowStyle="None"
-        ResizeMode="CanResizeWithGrip" AllowsTransparency="True">
-        
-    <Grid>
+        ResizeMode="CanResizeWithGrip"
+        AllowsTransparency="True" MouseDown="Window_MouseDown">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="auto" Width="auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.75*"/>
             <ColumnDefinition Width="4*"/>
@@ -25,8 +26,8 @@
 
 
 
-        
-        <Rectangle Grid.Row="0" Grid.ColumnSpan="2"  Fill="#95A5A6" MouseDown="Rectangle_MouseDown"/>
+
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="2"  Fill="#95A5A6"/>
         <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0">
             <Ellipse Height="20" Width="20" Margin="46,0,0,0" VerticalAlignment="Center" MouseUp="Maximize">
                 <Ellipse.Fill>
@@ -57,7 +58,6 @@
                 </Ellipse.Fill>
             </Ellipse>
         </Grid>
-        
         <TextBlock Text="Estate Manager" Grid.Column="0" Grid.Row="0" FontSize="16" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center"/>
 
         <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Fill="#1ABC9C"/>

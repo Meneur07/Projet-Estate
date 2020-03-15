@@ -17,10 +17,6 @@ namespace EstateManager.Views
             InitializeComponent();
         }
 
-        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
 
 
 
@@ -52,6 +48,11 @@ namespace EstateManager.Views
         private void Minimize(object sender, MouseButtonEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }
