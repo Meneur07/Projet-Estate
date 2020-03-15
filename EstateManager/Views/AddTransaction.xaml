@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EstateManager.Views"
         mc:Ignorable="d"
+        WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
         Title="Add a transaction" Height="700" Width="800" MinHeight="700" MinWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,6 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
@@ -28,35 +30,69 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="3"  Fill="#95A5A6" MouseDown="Rectangle_MouseDown"/>
+        <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,0">
+            <Ellipse Height="20" Width="20" Margin="46,0,0,0" VerticalAlignment="Center" MouseUp="Maximize">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#E67E22" Offset="0.0" />
+                        <GradientStop Color="#D35400" Offset="1" />
 
-        <TextBlock ToolTip="Estate reference" Text="{Binding Reference, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="0"/>
-        <TextBox ToolTip="Title" Text="{Binding Title}" Grid.Row="1" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Description" Text="{Binding Description}" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Publication date" Text="{Binding PubDate}" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+
+            </Ellipse>
+            <Ellipse Height="20" Width="20"  Margin="92,0,0,0" VerticalAlignment="Center" MouseUp="Ellipse_MouseUp">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#E74C3C" Offset="0.0" />
+                        <GradientStop Color="#C0392B" Offset="1" />
+
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Ellipse  Height="20" Width="20" VerticalAlignment="Center" MouseUp="Minimize">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#F1C40F" Offset="0.0" />
+                        <GradientStop Color="#F39C12" Offset="1" />
+
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        <TextBlock Text="   Add transaction" Grid.Column="0" Grid.Row="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+
+
+        <TextBlock ToolTip="Estate reference" Text="{Binding Reference, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0"/>
+        <TextBox ToolTip="Title" Text="{Binding Title}" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Description" Text="{Binding Description}" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Publication date" Text="{Binding PubDate}" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
         <!--Si possible remplacer avec une datePicker comme sur Android -->
-        <TextBox ToolTip="Transaction date"  Text="{Binding TransacDate}" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
-        <ComboBox ToolTip="Transaction type" Grid.Row="5" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType}"/>
-        <TextBox ToolTip="Price"  Text="{Binding Price}" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Fees" Text="{Binding Fees}" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Prop Id" Text="{Binding PropId}" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Client Id" Text="{Binding CliId}" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
-        <Image Grid.Row="10" Grid.RowSpan="2" Stretch="Uniform" Source="{Binding Path=Photo, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button ToolTip="Add this transaction" Grid.Row="12" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
+        <TextBox ToolTip="Transaction date"  Text="{Binding TransacDate}" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
+        <ComboBox ToolTip="Transaction type" Grid.Row="6" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType}"/>
+        <TextBox ToolTip="Price"  Text="{Binding Price}" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Fees" Text="{Binding Fees}" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Prop Id" Text="{Binding PropId}" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Client Id" Text="{Binding CliId}" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
+        <Image Grid.Row="11" Grid.RowSpan="2" Stretch="Uniform" Source="{Binding Path=Photo, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button ToolTip="Add this transaction" Grid.Row="13" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
 
-        <Rectangle Grid.Column="1" Grid.RowSpan="13" Fill="Black"/>
+        <Rectangle Grid.Column="1" Grid.Row="1" Grid.RowSpan="13" Fill="Black"/>
 
-        <TextBox ToolTip="Reference"  Text="{Binding Reference}" Grid.Column="2" Grid.Row="0" Style="{StaticResource CustomTextField}"/>
-        <ComboBox ToolTip="Estate type"  Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}" SelectedItem="{Binding EstateType}"/>
-        <Button ToolTip="Choose photo" Grid.Column="2" Grid.Row="2" Content="Pick Image" Style="{StaticResource CustomButton}" Command="{Binding PickImageCommand}"/>
-        <TextBox ToolTip="Floor count" Text="{Binding FloorCount}" Grid.Column="2" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount}" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Surface" Text="{Binding Surface}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Address" Text="{Binding Address}" Grid.Column="2" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Zip code" Text="{Binding ZipCode}" Grid.Column="2" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="City" Text="{Binding City}" Grid.Column="2" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Carbon foot print" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Comercial Id" Text="{Binding ComercialId}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Reference"  Text="{Binding Reference}" Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomTextField}"/>
+        <ComboBox ToolTip="Estate type"  Grid.Column="2" Grid.Row="2" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}" SelectedItem="{Binding EstateType}"/>
+        <Button ToolTip="Choose photo" Grid.Column="2" Grid.Row="3" Content="Pick Image" Style="{StaticResource CustomButton}" Command="{Binding PickImageCommand}"/>
+        <TextBox ToolTip="Floor count" Text="{Binding FloorCount}" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Surface" Text="{Binding Surface}" Grid.Column="2" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Address" Text="{Binding Address}" Grid.Column="2" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Zip code" Text="{Binding ZipCode}" Grid.Column="2" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="City" Text="{Binding City}" Grid.Column="2" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Carbon foot print" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Comercial Id" Text="{Binding ComercialId}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>
     </Grid>
 </Window>

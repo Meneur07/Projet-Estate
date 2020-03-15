@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="Estate Manager" Height="500" Width="800" MinHeight="200" MinWidth="1000"
         WindowStyle="None"
-        ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
-        >
+        ResizeMode="CanResizeWithGrip" AllowsTransparency="True">
         
     <Grid>
         <Grid.ColumnDefinitions>
@@ -54,7 +53,6 @@
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#F1C40F" Offset="0.0" />
                         <GradientStop Color="#F39C12" Offset="1" />
-
                     </LinearGradientBrush>
                 </Ellipse.Fill>
             </Ellipse>
