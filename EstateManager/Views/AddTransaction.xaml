@@ -28,25 +28,28 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
-        
+
         <TextBlock ToolTip="Estate reference" Text="{Binding Reference, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="0"/>
         <TextBox ToolTip="Title" Text="{Binding Title}" Grid.Row="1" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Description" Text="{Binding Description}" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Publication date" Text="{Binding PubDate}" Grid.Row="3" Style="{StaticResource CustomTextField}"/> <!--Si possible remplacer avec une datePicker comme sur Android -->
+        <TextBox ToolTip="Publication date" Text="{Binding PubDate}" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
+        <!--Si possible remplacer avec une datePicker comme sur Android -->
         <TextBox ToolTip="Transaction date"  Text="{Binding TransacDate}" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
         <ComboBox ToolTip="Transaction type" Grid.Row="5" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType}"/>
         <TextBox ToolTip="Price"  Text="{Binding Price}" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Fees" Text="{Binding Fees}" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Prop Id" Text="{Binding PropId}" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Client Id" Text="{Binding CliId}" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
-        <Image Grid.Row="10" Grid.RowSpan="2" Stretch="Uniform"/> <!-- Afficher l'image qui est choisie dans l'explorateur de fichiers-->
-        <Button ToolTip="Add this transaction" Grid.Row="12" Content="Add this transaction" Style="{StaticResource CustomButton}"/>
+        <Image Grid.Row="10" Grid.RowSpan="2" Stretch="Uniform" Source="{Binding Path=ImagePath, UpdateSourceTrigger=PropertyChanged}"/>
+        <!-- Afficher l'image qui est choisie dans l'explorateur de fichiers-->
+        <Button ToolTip="Add this transaction" Grid.Row="12" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
 
         <Rectangle Grid.Column="1" Grid.RowSpan="13" Fill="Black"/>
 
         <TextBox ToolTip="Reference"  Text="{Binding Reference}" Grid.Column="2" Grid.Row="0" Style="{StaticResource CustomTextField}"/>
         <ComboBox ToolTip="Estate type"  Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}" SelectedItem="{Binding EstateType}"/>
-        <Button ToolTip="Choose photo" Grid.Column="2" Grid.Row="2" Content="Pick Image" Style="{StaticResource CustomButton}"/> <!-- Start explo fichiers pour choisir image-->
+        <Button ToolTip="Choose photo" Grid.Column="2" Grid.Row="2" Content="Pick Image" Style="{StaticResource CustomButton}" Command="{Binding PickImageCommand}"/>
+        <!-- Start explo fichiers pour choisir image-->
         <TextBox ToolTip="Floor count" Text="{Binding FloorCount}" Grid.Column="2" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount}" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Surface" Text="{Binding Surface}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
