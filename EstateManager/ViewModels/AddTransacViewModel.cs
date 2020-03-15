@@ -4,6 +4,7 @@ using System;
 using System.Windows.Input;
 using System.Windows;
 using System.IO;
+using System.Drawing;
 
 namespace EstateManager.ViewModels
 {
@@ -35,14 +36,12 @@ namespace EstateManager.ViewModels
         public int CarbonFootPrint { get; set; }
         public int EnergeticPerformance { get; set; }
         public int ComercialId { get; set; }
-        public byte[] Photo { get; set; }
 
-        public string ImagePath
+        public byte[] Photo
         {
-            get { return GetProperty<string>(); }
-            set { SetProperty<string>(value); }
+            get { return GetProperty<byte[]>(); }
+            set { SetProperty<byte[]>(value); }
         }
-
 
         public ICommand AddCommand
         {
@@ -74,7 +73,17 @@ namespace EstateManager.ViewModels
 
             if (result == true)
             {
-                ImagePath = dlg.FileName;
+                string imagePath = dlg.FileName;
+                Photo = ImageToByteArray(Image.FromFile(imagePath));
+            }
+        }
+
+        public byte[] ImageToByteArray(Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
             }
         }
     }
