@@ -18,34 +18,12 @@ namespace EstateManager.Views
         }
 
 
-
-
-        private void Ellipse_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Close(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Maximize(object sender, MouseButtonEventArgs e)
-        {
-            if(Width == Screen.PrimaryScreen.WorkingArea.Width && Height == Screen.PrimaryScreen.WorkingArea.Height)
-            {
-
-                Width = 800;
-                Height = 500;
-            }
-            else
-            {
-
-
-                Left = Top = 0;
-
-                Width = Screen.PrimaryScreen.WorkingArea.Width;
-                Height = Screen.PrimaryScreen.WorkingArea.Height;
-            }
-            
-        }
-
-        private void Minimize(object sender, MouseButtonEventArgs e)
+        private void Minimize(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
@@ -53,6 +31,21 @@ namespace EstateManager.Views
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Maximize(object sender, RoutedEventArgs e)
+        {
+            if (Width == Screen.PrimaryScreen.WorkingArea.Width && Height == Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                Width = 800;
+                Height = 500;
+            }
+            else
+            {
+                Left = Top = 0;
+                Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Height = Screen.PrimaryScreen.WorkingArea.Height;
+            }
         }
     }
 }

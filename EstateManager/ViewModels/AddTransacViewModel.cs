@@ -25,7 +25,12 @@ namespace EstateManager.ViewModels
 
 
         //Estate part
-        public string Reference { get; set; }
+        public string Reference
+        {
+            get { return GetProperty<string>(); }
+            set { SetProperty<string>(value); }
+        }
+
         public TypeEstate EstateType { get; set; }
         public int FloorCount { get; set; }
         public int BathroomCount { get; set; }
@@ -53,7 +58,7 @@ namespace EstateManager.ViewModels
 
         void clickAdd()
         {
-            //Ajouter la transac et l'estate dans la BD
+            //Ajouter la transaction et l'estate dans la BD
         }
 
         public ICommand PickImageCommand
