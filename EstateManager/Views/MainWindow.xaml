@@ -26,6 +26,7 @@
 
 
 
+        <Frame Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Content="{Binding Path=ActualPage}" NavigationUIVisibility="Hidden" Source="StatPage.xaml"/>
 
         <Rectangle Grid.Row="0" Grid.ColumnSpan="2"  Fill="#95A5A6"/>
         <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0">
@@ -75,7 +76,7 @@
         <TextBlock Text="Estate Manager" Grid.Column="0" Grid.Row="0" FontSize="16" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center"/>
 
         <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Fill="#1ABC9C"/>
-        <Frame Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Content="{Binding Path=ActualPage}" NavigationUIVisibility="Hidden" Source="StatPage.xaml"/>
+        
         <Button Grid.Row="1" Grid.Column="0" Content="Statistics" Command="{Binding Path=StatCommand}" Style="{StaticResource NavButton}"/>
         <Button Grid.Row="2" Grid.Column="0" Content="Estates" Command="{Binding Path=EstateCommand}" Style="{StaticResource NavButton}"/>
         <Button Grid.Row="3" Grid.Column="0" Content="Clients" Command="{Binding Path=ClientCommand}" Style="{StaticResource NavButton}"/>

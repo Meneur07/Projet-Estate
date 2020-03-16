@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -20,13 +20,35 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}"/>
+        <ScrollViewer CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="5">
+            <StackPanel>
+                <Rectangle Height="100" Fill="Red"/>
+                <Rectangle  Height="100" Fill="Green"/>
+                <Rectangle  Height="100" Fill="Blue"/>
+                <Rectangle Height="100" Fill="Red"/>
+                <Rectangle  Height="100" Fill="Green"/>
+                <Rectangle  Height="100" Fill="Blue"/>
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <Rectangle  Grid.Row="0" Grid.ColumnSpan="5" Fill="#BDC3C7">
+
+            <Rectangle.Effect>
+                <DropShadowEffect Color="Black" Direction="-90" Opacity=".5" BlurRadius="50"/>
+            </Rectangle.Effect>
+
+        </Rectangle>
 
         <ComboBox Grid.Row="0" Grid.Column="0" Style="{StaticResource CustomComboBox}"/>
         <ComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource CustomComboBox}"/>
         <ComboBox Grid.Row="0" Grid.Column="2" Style="{StaticResource CustomComboBox}"/>
         <ComboBox Grid.Row="0" Grid.Column="3" Style="{StaticResource CustomComboBox}"/>
+        
         <Button Content="ADD" Grid.Row="0" Grid.Column="4" Style="{StaticResource CustomButton}"  Command="{Binding AddCommand}" Background="#27AE60" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
-        <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}"/>
+
+
 
     </Grid>
 </Page>
