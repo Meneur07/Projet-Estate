@@ -25,7 +25,7 @@
         <ComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource CustomComboBox}"/>
         <ComboBox Grid.Row="0" Grid.Column="2" Style="{StaticResource CustomComboBox}"/>
         <ComboBox Grid.Row="0" Grid.Column="3" Style="{StaticResource CustomComboBox}"/>
-        <Button Content="Add" Grid.Row="0" Grid.Column="4" Style="{StaticResource CustomButton}"  Command="{Binding AddCommand}"/>
+        <Button Content="ADD" Grid.Row="0" Grid.Column="4" Style="{StaticResource CustomButton}"  Command="{Binding AddCommand}" Background="#27AE60" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
         <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}"/>
 
     </Grid>
