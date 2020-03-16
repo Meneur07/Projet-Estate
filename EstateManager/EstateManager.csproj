@@ -170,6 +170,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ByteArrayToBitmapImageConverter.cs" />
+    <Compile Include="Migrations\20200316175642_ajoutPicture.cs" />
+    <Compile Include="Migrations\20200316175642_ajoutPicture.designer.cs">
+      <DependentUpon>20200316175642_ajoutPicture.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AddTransacViewModel.cs" />
     <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
@@ -189,6 +193,9 @@
     </Compile>
     <Compile Include="Views\StatPage.xaml.cs">
       <DependentUpon>StatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\testItemLayout.xaml.cs">
+      <DependentUpon>testItemLayout.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AddTransaction.xaml">
       <SubType>Designer</SubType>
@@ -238,6 +245,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\StatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\testItemLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

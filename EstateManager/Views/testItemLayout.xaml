@@ -1,0 +1,26 @@
+﻿<Page x:Class="EstateManager.Views.testItemLayout"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EstateManager.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="800"
+      Background="#95A5A6"
+      Title="testItemLayout">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="87*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="E:\image\azda.jpg" Height="260" Width="Auto" HorizontalAlignment="Left" Margin="10,20,0,20"/>
+        <TextBlock HorizontalAlignment="Left"  Margin="275,20,0,0" TextWrapping="Wrap" Text="House to Buy" VerticalAlignment="Top" Width="266.172" FontSize="18" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left"  Margin="275,131.972,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149.027" FontSize="18" Foreground="White"><Run FontWeight="Bold" Text="T"/><Run FontWeight="Bold" Text="own"/><Run FontWeight="Bold" Text=" "/><Run Text=": Oyonnax"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left"  Margin="275,48.94,0,0" TextWrapping="Wrap" Text="Le Bon Titre" VerticalAlignment="Top" Width="149.027" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left"  Margin="275,160.912,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515" FontSize="18" Height="119.088" Foreground="White" Grid.ColumnSpan="2"><Run Text="Description :"/><Run Text=" "/><Run Text="Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme"/></TextBlock>
+        <Button Content="x" HorizontalAlignment="Center" Height="40" Margin="8.8,20,55,240" VerticalAlignment="Center" Width="40" Foreground="White" Background="#FFE74C3C" FontSize="22" BorderBrush="{x:Null}" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="I" HorizontalAlignment="Center" Height="40" Margin="53.8,20,10,240" VerticalAlignment="Center" Width="40" Foreground="White" Background="#FF27AE60" FontSize="22" BorderBrush="{x:Null}" Grid.Column="1"/>
+
+    </Grid>
+</Page>

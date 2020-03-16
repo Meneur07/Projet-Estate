@@ -21,17 +21,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}"/>
-        <ScrollViewer CanContentScroll="True" Grid.Row="1" Grid.ColumnSpan="5">
-            <StackPanel>
-                <Rectangle Height="100" Fill="Red"/>
-                <Rectangle  Height="100" Fill="Green"/>
-                <Rectangle  Height="100" Fill="Blue"/>
-                <Rectangle Height="100" Fill="Red"/>
-                <Rectangle  Height="100" Fill="Green"/>
-                <Rectangle  Height="100" Fill="Blue"/>
-            </StackPanel>
 
-        </ScrollViewer>
 
         <Rectangle  Grid.Row="0" Grid.ColumnSpan="5" Fill="#BDC3C7">
 

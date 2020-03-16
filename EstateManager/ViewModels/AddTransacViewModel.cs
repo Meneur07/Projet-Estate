@@ -25,10 +25,10 @@ namespace EstateManager.ViewModels
 
 
         //Estate part
-        public string Reference
+        public int Reference
         {
-            get { return GetProperty<string>(); }
-            set { SetProperty<string>(value); }
+            get { return GetProperty<int>(); }
+            set { SetProperty<int>(value); }
         }
 
         public TypeEstate EstateType { get; set; }
@@ -40,7 +40,7 @@ namespace EstateManager.ViewModels
         public int FloorNumber { get; set; }
         public int CarbonFootPrint { get; set; }
         public int EnergeticPerformance { get; set; }
-        public int ComercialId { get; set; }
+        public int CommercialId { get; set; }
 
         public byte[] Photo
         {
@@ -58,6 +58,41 @@ namespace EstateManager.ViewModels
 
         void clickAdd()
         {
+
+
+            Transaction transactionToBeAdded = new Transaction()
+            {
+                Title = Title,
+                Description = Description,
+                PublicationDate = PubDate,
+                TransactionDate = TransacDate,
+                Type = TransacType,
+                Price = Price,
+                Fees = Fees,
+                OwnerId=PropId,
+                ClientId=CliId
+
+            };
+
+            Estate estateToBeAdded = new Estate()
+            {
+                Reference = Reference,
+                FloorCount = FloorCount,
+                BathroomCount = BathroomCount,
+                Surface = Surface,
+                Address=Address,
+                ZipCode = ZipCode,
+                FloorNumber=FloorNumber,
+                CarbonFootPrint = CarbonFootPrint,
+                EnergeticPerformance = EnergeticPerformance,
+                CommercialId = CommercialId,
+                Picture = Photo
+
+            };
+            dbContext.Add(estateToBeAdded);
+            dbContext.Add(transactionToBeAdded);
+            dbContext.SaveChanges();
+
             //Ajouter la transaction et l'estate dans la BD
         }
 

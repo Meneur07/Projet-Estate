@@ -105,6 +105,6 @@
         <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Carbon foot print" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Comercial Id" Text="{Binding ComercialId}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Comercial Id" Text="{Binding CommercialId}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>
     </Grid>
 </Window>
