@@ -8,7 +8,7 @@
         Title="Estate Manager" Height="500" Width="800" MinHeight="200" MinWidth="1000"
         WindowStyle="None"
         ResizeMode="CanResizeWithGrip"
-        AllowsTransparency="True" MouseDown="Window_MouseDown">
+        AllowsTransparency="True" MouseDown="Move">
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="auto" Width="auto">
         <Grid.ColumnDefinitions>
@@ -29,7 +29,7 @@
 
         <Rectangle Grid.Row="0" Grid.ColumnSpan="2"  Fill="#95A5A6"/>
         <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Height="20" Width="20" Margin="46,0,0,0" VerticalAlignment="Center" BorderThickness="0" Click="Maximize">
+            <Button Margin="46,0,0,0" Style="{StaticResource WindowButtons}" Click="Maximize">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#E67E22" Offset="0.0" />
@@ -43,7 +43,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Height="20" Width="20" Margin="92,0,0,0" VerticalAlignment="Center" BorderThickness="0" Click="Close">
+            <Button Margin="92,0,0,0" Style="{StaticResource WindowButtons}" Click="Close">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#E74C3C" Offset="0.0" />
@@ -58,7 +58,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Height="20" Width="20" VerticalAlignment="Center" BorderThickness="0" Click="Minimize">
+            <Button Style="{StaticResource WindowButtons}" Click="Minimize">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#F1C40F" Offset="0.0" />

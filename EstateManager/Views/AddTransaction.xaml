@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EstateManager.Views"
         mc:Ignorable="d"
         WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
-        Title="Add a transaction" Height="700" Width="800" MinHeight="700" MinWidth="800">
+        Title="Add a transaction" Height="700" Width="800" MinHeight="700" MinWidth="800" MouseDown="Move">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,9 +30,9 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.ColumnSpan="3"  Fill="#95A5A6" MouseDown="Rectangle_MouseDown"/>
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="3"  Fill="#95A5A6"/>
         <Grid Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Height="20" Width="20" Margin="46,0,0,0" VerticalAlignment="Center" BorderThickness="0" Click="Maximize">
+            <Button Margin="46,0,0,0" Style="{StaticResource WindowButtons}" Click="Maximize">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#E67E22" Offset="0.0" />
@@ -46,12 +46,11 @@
                 </Button.Resources>
             </Button>
 
-            <Button Height="20" Width="20" Margin="92,0,0,0" VerticalAlignment="Center" BorderThickness="0" Click="Close">
+            <Button Margin="92,0,0,0" Style="{StaticResource WindowButtons}" Click="Close">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#E74C3C" Offset="0.0" />
                         <GradientStop Color="#C0392B" Offset="1" />
-
                     </LinearGradientBrush>
                 </Button.Background>
                 <Button.Resources>
@@ -61,7 +60,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Height="20" Width="20" VerticalAlignment="Center" BorderThickness="0" Click="Minimize">
+            <Button Style="{StaticResource WindowButtons}" Click="Minimize">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#F1C40F" Offset="0.0" />

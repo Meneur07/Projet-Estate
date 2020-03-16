@@ -28,7 +28,7 @@ namespace EstateManager.Views
             this.WindowState = WindowState.Minimized;
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Move(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
