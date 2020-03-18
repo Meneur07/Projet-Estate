@@ -74,6 +74,12 @@ namespace EstateManager.ViewModels
 
             };
 
+            var daPhoto = dbContext.Add(new Photo()
+            {
+                Picture = Photo,
+               
+            });
+
             Estate estateToBeAdded = new Estate()
             {
                 Reference = Reference,
@@ -86,9 +92,10 @@ namespace EstateManager.ViewModels
                 CarbonFootPrint = CarbonFootPrint,
                 EnergeticPerformance = EnergeticPerformance,
                 CommercialId = CommercialId,
-                Picture = Photo
+                PictureId = daPhoto.Entity.Id
 
             };
+
             dbContext.Add(estateToBeAdded);
             dbContext.Add(transactionToBeAdded);
             dbContext.SaveChanges();

@@ -170,10 +170,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ByteArrayToBitmapImageConverter.cs" />
-    <Compile Include="Migrations\20200316175642_ajoutPicture.cs" />
-    <Compile Include="Migrations\20200316175642_ajoutPicture.designer.cs">
-      <DependentUpon>20200316175642_ajoutPicture.cs</DependentUpon>
+    <Compile Include="Migrations\20200316185951_initial.cs" />
+    <Compile Include="Migrations\20200316185951_initial.designer.cs">
+      <DependentUpon>20200316185951_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
     <Compile Include="ViewModels\AddTransacViewModel.cs" />
     <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
@@ -224,11 +225,6 @@
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\GenericDelegateCommand.cs" />
     <Compile Include="DataAccess\EstateDbContextFactory.cs" />
-    <Compile Include="Migrations\20200311080619_init.cs" />
-    <Compile Include="Migrations\20200311080619_init.designer.cs">
-      <DependentUpon>20200311080619_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Estate.cs" />
     <Compile Include="Models\Person.cs" />

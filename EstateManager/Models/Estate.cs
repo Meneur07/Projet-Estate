@@ -26,10 +26,19 @@ namespace EstateManager.Models
         }
 
 
-        public byte[] Picture
+
+
+        public int PictureId
         {
-            get { return GetProperty<byte[]>(); }
-            set { SetProperty<byte[]>(value); }
+            get { return GetProperty<int>(); }
+            set { SetProperty<int>(value); }
+        }
+
+        [ForeignKey(nameof(PictureId))]
+        public Photo Picture
+        {
+            get { return GetProperty<Photo>(); }
+            set { SetProperty<Photo>(value); }
         }
 
 

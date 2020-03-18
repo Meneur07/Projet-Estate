@@ -46,8 +46,8 @@ namespace EstateManager.Migrations
                     b.Property<int>("FloorNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<byte[]>("Picture")
-                        .HasColumnType("BLOB");
+                    b.Property<int>("PictureId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<float>("Surface")
                         .HasColumnType("REAL");
@@ -61,6 +61,8 @@ namespace EstateManager.Migrations
                     b.HasKey("Reference");
 
                     b.HasIndex("CommercialId");
+
+                    b.HasIndex("PictureId");
 
                     b.ToTable("Estates");
                 });
@@ -224,6 +226,12 @@ namespace EstateManager.Migrations
                     b.HasOne("EstateManager.Models.Person", "Person")
                         .WithMany()
                         .HasForeignKey("CommercialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EstateManager.Models.Photo", "Picture")
+                        .WithMany()
+                        .HasForeignKey("PictureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

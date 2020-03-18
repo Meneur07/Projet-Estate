@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EstateManager.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,35 +37,6 @@ namespace EstateManager.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tags", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Estates",
-                columns: table => new
-                {
-                    Reference = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Type = table.Column<int>(nullable: false),
-                    FloorCount = table.Column<int>(nullable: false),
-                    BathroomCount = table.Column<int>(nullable: false),
-                    Surface = table.Column<float>(nullable: false),
-                    Address = table.Column<string>(nullable: true),
-                    ZipCode = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    FloorNumber = table.Column<int>(nullable: false),
-                    CarbonFootPrint = table.Column<int>(nullable: false),
-                    EnergeticPerformance = table.Column<int>(nullable: false),
-                    CommercialId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Estates", x => x.Reference);
-                    table.ForeignKey(
-                        name: "FK_Estates_Persons_CommercialId",
-                        column: x => x.CommercialId,
-                        principalTable: "Persons",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,11 +79,41 @@ namespace EstateManager.Migrations
                         principalTable: "Persons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Estates",
+                columns: table => new
+                {
+                    Reference = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Type = table.Column<int>(nullable: false),
+                    PictureId = table.Column<int>(nullable: false),
+                    FloorCount = table.Column<int>(nullable: false),
+                    BathroomCount = table.Column<int>(nullable: false),
+                    Surface = table.Column<float>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    FloorNumber = table.Column<int>(nullable: false),
+                    CarbonFootPrint = table.Column<int>(nullable: false),
+                    EnergeticPerformance = table.Column<int>(nullable: false),
+                    CommercialId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Estates", x => x.Reference);
                     table.ForeignKey(
-                        name: "FK_Photos_Estates_Reference",
-                        column: x => x.Reference,
-                        principalTable: "Estates",
-                        principalColumn: "Reference",
+                        name: "FK_Estates_Persons_CommercialId",
+                        column: x => x.CommercialId,
+                        principalTable: "Persons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Estates_Photos_PictureId",
+                        column: x => x.PictureId,
+                        principalTable: "Photos",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -186,6 +187,11 @@ namespace EstateManager.Migrations
                 column: "CommercialId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Estates_PictureId",
+                table: "Estates",
+                column: "PictureId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Photos_PersonId",
                 table: "Photos",
                 column: "PersonId");
@@ -219,12 +225,29 @@ namespace EstateManager.Migrations
                 name: "IX_Users_PersonId",
                 table: "Users",
                 column: "PersonId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Photos_Estates_Reference",
+                table: "Photos",
+                column: "Reference",
+                principalTable: "Estates",
+                principalColumn: "Reference",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Photos");
+            migrationBuilder.DropForeignKey(
+                name: "FK_Estates_Persons_CommercialId",
+                table: "Estates");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Photos_Persons_PersonId",
+                table: "Photos");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Estates_Photos_PictureId",
+                table: "Estates");
 
             migrationBuilder.DropTable(
                 name: "TagEstates");
@@ -239,10 +262,13 @@ namespace EstateManager.Migrations
                 name: "Tags");
 
             migrationBuilder.DropTable(
-                name: "Estates");
+                name: "Persons");
 
             migrationBuilder.DropTable(
-                name: "Persons");
+                name: "Photos");
+
+            migrationBuilder.DropTable(
+                name: "Estates");
         }
     }
 }
