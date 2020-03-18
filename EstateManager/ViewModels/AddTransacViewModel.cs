@@ -16,17 +16,19 @@ namespace EstateManager.ViewModels
 
 
 
-        public ObservableCollection<Person> People
-        {
-            get { return GetProperty<ObservableCollection<Person>>(); }
-            set { SetProperty<ObservableCollection<Person>>(value); }
-        }
+        //public ObservableCollection<Person> People
+        //{
+        //    get { return GetProperty<ObservableCollection<Person>>(); }
+        //    set { SetProperty<ObservableCollection<Person>>(value); }
+        //}
 
-        //public static ObservableCollection<Person> People { get; set; }
+        public static ObservableCollection<Person> People { get; set; } = new ObservableCollection<Person>();
 
         public AddTransacViewModel()
         {
-            People = new ObservableCollection<Person>();
+            if (People.Count != 0)
+                return;
+
             for (int i = 0; i < 7; i++)
             {
                 Person toAdd = new Person()
@@ -122,9 +124,9 @@ namespace EstateManager.ViewModels
                 Type = TransacType,
                 Price = Price,
                 Fees = Fees,
-                Reference = estateToBeAdded.Reference,
-                OwnerId =Owner.Id,
-                ClientId=Client.Id
+                Estate = estateToBeAdded,
+                Owner=Owner,
+                Client=Client
 
             };
 
@@ -133,7 +135,6 @@ namespace EstateManager.ViewModels
 
 
             dbContext.Add(estateToBeAdded);
-            dbContext.SaveChanges();
             dbContext.Add(transactionToBeAdded);
             dbContext.SaveChanges();
             //dbContext.SaveChanges();

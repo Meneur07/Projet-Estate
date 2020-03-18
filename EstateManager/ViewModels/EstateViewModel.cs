@@ -6,16 +6,25 @@ using System.Windows.Input;
 
 namespace EstateManager.ViewModels
 {
-    class EstateViewModel
+    class EstateViewModel : BaseNotifyPropertyChanged
     {
 
-        public ObservableCollection<Transaction> Transactions { get; set; }
+
+        public ObservableCollection<Transaction> Transactions
+        {
+            get { return GetProperty<ObservableCollection<Transaction>>(); }
+            set { SetProperty<ObservableCollection<Transaction>>(value); }
+        }
+
+
         private EstateManagerContext dbContext;
 
         public EstateViewModel()
         {
             Transactions = new ObservableCollection<Transaction>();
             dbContext = EstateManagerContext.Current;
+
+
         }
 
         public ICommand AddCommand
