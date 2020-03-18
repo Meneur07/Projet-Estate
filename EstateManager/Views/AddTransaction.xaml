@@ -86,8 +86,13 @@
         <ComboBox ToolTip="Transaction type" Grid.Row="6" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType}"/>
         <TextBox ToolTip="Price"  Text="{Binding Price}" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Fees" Text="{Binding Fees}" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Prop Id" Text="{Binding PropId}" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Client Id" Text="{Binding CliId}" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
+        <!--<TextBox ToolTip="Prop Id" Text="{Binding PropId}" Grid.Row="9" Style="{StaticResource CustomTextField}"/>-->
+
+        <ComboBox ItemsSource="{Binding People}" ToolTip="Owner" Grid.Row="9" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Owner}"/>
+        
+        <!--<TextBox ToolTip="Client Id" Text="{Binding CliId}" Grid.Row="10" Style="{StaticResource CustomTextField}"/>-->
+        <ComboBox ItemsSource="{Binding People}" ToolTip="Client" Grid.Row="10" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Client}"/>
+
         <Image Grid.Row="11" Grid.RowSpan="2" Stretch="Uniform" Source="{Binding Path=Photo, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
         <Button ToolTip="Add this transaction" Grid.Row="13" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
 
@@ -105,6 +110,7 @@
         <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Carbon foot print" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Comercial Id" Text="{Binding CommercialId}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>
+        <ComboBox ItemsSource="{Binding People}" ToolTip="Commercial" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Commercial}"/>
+        <!--<TextBox ToolTip="Comercial Id" Text="{Binding CommercialId}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>-->
     </Grid>
 </Window>

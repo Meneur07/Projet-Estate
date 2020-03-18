@@ -170,9 +170,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ByteArrayToBitmapImageConverter.cs" />
-    <Compile Include="Migrations\20200316185951_initial.cs" />
-    <Compile Include="Migrations\20200316185951_initial.designer.cs">
-      <DependentUpon>20200316185951_initial.cs</DependentUpon>
+    <Compile Include="Migrations\20200318080838_testPhoto.cs" />
+    <Compile Include="Migrations\20200318080838_testPhoto.designer.cs">
+      <DependentUpon>20200318080838_testPhoto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
     <Compile Include="ViewModels\AddTransacViewModel.cs" />

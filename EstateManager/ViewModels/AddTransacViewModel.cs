@@ -5,12 +5,42 @@ using System.Windows.Input;
 using System.Windows;
 using System.IO;
 using System.Drawing;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace EstateManager.ViewModels
 {
     class AddTransacViewModel : BaseNotifyPropertyChanged
     {
         private EstateManagerContext dbContext = EstateManagerContext.Current;
+
+
+
+        public ObservableCollection<Person> People
+        {
+            get { return GetProperty<ObservableCollection<Person>>(); }
+            set { SetProperty<ObservableCollection<Person>>(value); }
+        }
+
+        //public static ObservableCollection<Person> People { get; set; }
+
+        public AddTransacViewModel()
+        {
+            People = new ObservableCollection<Person>();
+            for (int i = 0; i < 7; i++)
+            {
+                Person toAdd = new Person()
+                {
+                    FirstName = "Jean" + i,
+                    LastName = "Michou"
+                };
+                dbContext.Add(toAdd);
+
+                People.Add(toAdd);
+            }
+            dbContext.SaveChanges();
+        }
+        
 
         // Transaction part
         public string Title { get; set; }
@@ -20,8 +50,9 @@ namespace EstateManager.ViewModels
         public TypeTransaction TransacType { get; set; }
         public double Price { get; set; }
         public double Fees { get; set; }
-        public int PropId { get; set; }
-        public int CliId { get; set; }
+        public Person Owner { get; set; }
+        public Person Client { get; set; }
+       
 
 
         //Estate part
@@ -40,7 +71,7 @@ namespace EstateManager.ViewModels
         public int FloorNumber { get; set; }
         public int CarbonFootPrint { get; set; }
         public int EnergeticPerformance { get; set; }
-        public int CommercialId { get; set; }
+        public Person Commercial { get; set; }
 
         public byte[] Photo
         {
@@ -59,6 +90,28 @@ namespace EstateManager.ViewModels
         void clickAdd()
         {
 
+            Estate estateToBeAdded = new Estate()
+            {
+                Reference = Reference,
+                FloorCount = FloorCount,
+                BathroomCount = BathroomCount,
+                Surface = Surface,
+                Address = Address,
+                ZipCode = ZipCode,
+                FloorNumber = FloorNumber,
+                CarbonFootPrint = CarbonFootPrint,
+                EnergeticPerformance = EnergeticPerformance,
+                CommercialId = Commercial.Id,
+                Photos = new List<Photo>
+                {
+                    new Photo()
+                    {
+                        Picture=Photo,
+                        PersonId=Commercial.Id
+                    }
+                }
+
+            };
 
             Transaction transactionToBeAdded = new Transaction()
             {
@@ -69,36 +122,21 @@ namespace EstateManager.ViewModels
                 Type = TransacType,
                 Price = Price,
                 Fees = Fees,
-                OwnerId=PropId,
-                ClientId=CliId
+                Reference = estateToBeAdded.Reference,
+                OwnerId =Owner.Id,
+                ClientId=Client.Id
 
             };
 
-            var daPhoto = dbContext.Add(new Photo()
-            {
-                Picture = Photo,
-               
-            });
 
-            Estate estateToBeAdded = new Estate()
-            {
-                Reference = Reference,
-                FloorCount = FloorCount,
-                BathroomCount = BathroomCount,
-                Surface = Surface,
-                Address=Address,
-                ZipCode = ZipCode,
-                FloorNumber=FloorNumber,
-                CarbonFootPrint = CarbonFootPrint,
-                EnergeticPerformance = EnergeticPerformance,
-                CommercialId = CommercialId,
-                PictureId = daPhoto.Entity.Id
 
-            };
+
 
             dbContext.Add(estateToBeAdded);
+            dbContext.SaveChanges();
             dbContext.Add(transactionToBeAdded);
             dbContext.SaveChanges();
+            //dbContext.SaveChanges();
 
             //Ajouter la transaction et l'estate dans la BD
         }

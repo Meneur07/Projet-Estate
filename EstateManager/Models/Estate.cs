@@ -28,18 +28,12 @@ namespace EstateManager.Models
 
 
 
-        public int PictureId
+        public virtual ICollection<Photo> Photos
         {
-            get { return GetProperty<int>(); }
-            set { SetProperty<int>(value); }
+            get { return GetProperty<ICollection<Photo>>(); }
+            set { SetProperty<ICollection<Photo>>(value); }
         }
 
-        [ForeignKey(nameof(PictureId))]
-        public Photo Picture
-        {
-            get { return GetProperty<Photo>(); }
-            set { SetProperty<Photo>(value); }
-        }
 
 
         public int FloorCount

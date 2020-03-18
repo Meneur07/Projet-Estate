@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-    [Migration("20200316185951_initial")]
-    partial class initial
+    [Migration("20200318080838_testPhoto")]
+    partial class testPhoto
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,9 +48,6 @@ namespace EstateManager.Migrations
                     b.Property<int>("FloorNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PictureId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<float>("Surface")
                         .HasColumnType("REAL");
 
@@ -63,8 +60,6 @@ namespace EstateManager.Migrations
                     b.HasKey("Reference");
 
                     b.HasIndex("CommercialId");
-
-                    b.HasIndex("PictureId");
 
                     b.ToTable("Estates");
                 });
@@ -230,12 +225,6 @@ namespace EstateManager.Migrations
                         .HasForeignKey("CommercialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("EstateManager.Models.Photo", "Picture")
-                        .WithMany()
-                        .HasForeignKey("PictureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("EstateManager.Models.Photo", b =>
@@ -247,7 +236,7 @@ namespace EstateManager.Migrations
                         .IsRequired();
 
                     b.HasOne("EstateManager.Models.Estate", "Estate")
-                        .WithMany()
+                        .WithMany("Photos")
                         .HasForeignKey("Reference")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
