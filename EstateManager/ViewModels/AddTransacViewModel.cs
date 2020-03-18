@@ -75,10 +75,10 @@ namespace EstateManager.ViewModels
         public int EnergeticPerformance { get; set; }
         public Person Commercial { get; set; }
 
-        public byte[] Photo
+        public Photo Photo
         {
-            get { return GetProperty<byte[]>(); }
-            set { SetProperty<byte[]>(value); }
+            get { return GetProperty<Photo>(); }
+            set { SetProperty<Photo>(value); }
         }
 
         public ICommand AddCommand
@@ -160,7 +160,9 @@ namespace EstateManager.ViewModels
             if (result == true)
             {
                 string imagePath = dlg.FileName;
-                Photo = ImageToByteArray(Image.FromFile(imagePath));
+                Photo.Picture = ImageToByteArray(Image.FromFile(imagePath));
+                Photo.ShootingDate = File.GetCreationTime(imagePath);
+                Photo.PersonId = Commercial.Id;
             }
         }
 

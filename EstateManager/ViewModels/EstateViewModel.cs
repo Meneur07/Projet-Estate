@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EstateManager.ViewModels
 {
@@ -25,10 +26,11 @@ namespace EstateManager.ViewModels
             Transactions = new ObservableCollection<Transaction>();
             dbContext = EstateManagerContext.Current;
 
-            var transList = dbContext.Transactions.ToList();
+            var transList = dbContext.Transactions.Include(b => b.Estate).ThenInclude(est => est.Photos).ToList();
             foreach (var trans in transList)
             {
                 Transactions.Add(trans);
+                trans.Estate.Photos.First();
             }
 
             

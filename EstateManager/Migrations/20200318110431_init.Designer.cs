@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-    [Migration("20200317114330_RemiseAuPropre")]
-    partial class RemiseAuPropre
+    [Migration("20200318110431_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,9 +47,6 @@ namespace EstateManager.Migrations
 
                     b.Property<int>("FloorNumber")
                         .HasColumnType("INTEGER");
-
-                    b.Property<byte[]>("Picture")
-                        .HasColumnType("BLOB");
 
                     b.Property<float>("Surface")
                         .HasColumnType("REAL");
@@ -239,7 +236,7 @@ namespace EstateManager.Migrations
                         .IsRequired();
 
                     b.HasOne("EstateManager.Models.Estate", "Estate")
-                        .WithMany()
+                        .WithMany("Photos")
                         .HasForeignKey("Reference")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
