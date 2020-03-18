@@ -23,7 +23,7 @@
         <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}" ItemsSource="{Binding Transactions}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="#95A5A6">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="26*"/>
                             <RowDefinition Height="33*"/>
@@ -38,7 +38,7 @@
                             <ColumnDefinition Width="219*"/>
                             <ColumnDefinition Width="114*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="C:\Users\yolos\OneDrive\Images\thomas-the-train.jpg" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" Margin="2"/>
+                        <Image Source="{Binding Estate.Photos[0], Converter={StaticResource ByteArrayToImage},UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" Margin="2"/>
                         <TextBlock Text="{Binding Estate.Type}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
                         <TextBlock Text=" to " Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Foreground="White"/>
                         <TextBlock Text="{Binding Type}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>

@@ -3,6 +3,7 @@ using EstateManager.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 
 namespace EstateManager.ViewModels
 {
@@ -24,7 +25,13 @@ namespace EstateManager.ViewModels
             Transactions = new ObservableCollection<Transaction>();
             dbContext = EstateManagerContext.Current;
 
+            var transList = dbContext.Transactions.ToList();
+            foreach (var trans in transList)
+            {
+                Transactions.Add(trans);
+            }
 
+            
         }
 
         public ICommand AddCommand
