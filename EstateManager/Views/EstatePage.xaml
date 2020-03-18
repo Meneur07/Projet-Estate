@@ -20,7 +20,50 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}"/>
+        <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}" ItemsSource="{Binding Transactions}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="26*"/>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="36*"/>
+                            <RowDefinition Height="89*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="229*"/>
+                            <ColumnDefinition Width="114*"/>
+                            <ColumnDefinition Width="37*"/>
+                            <ColumnDefinition Width="87*"/>
+                            <ColumnDefinition Width="219*"/>
+                            <ColumnDefinition Width="114*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="C:\Users\yolos\OneDrive\Images\thomas-the-train.jpg" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" Margin="2"/>
+                        <TextBlock Text="{Binding Estate.Type}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
+                        <TextBlock Text=" to " Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Foreground="White"/>
+                        <TextBlock Text="{Binding Type}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
+
+                        <Button Content="{StaticResource TrashImage}" Background="Red" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="-50,0,0,0" Command="{Binding DataContext.DeleteCommand}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button Content="{StaticResource PenImage}" Background="Orange" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="50,0,0,0" Command="{Binding DataContext.ModifyCommand}">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <TextBlock Text="{Binding Estate.City}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Margin="10,10,10,10" Foreground="White"/>
+                        <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" Margin="10,10,10,10" Foreground="White"/>
+                        <TextBlock Text="{Binding Description}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="10,10,10,10" Foreground="White"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
         <Rectangle  Grid.Row="0" Grid.ColumnSpan="5" Fill="#BDC3C7">

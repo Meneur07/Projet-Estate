@@ -10,6 +10,9 @@
 
         <nsConverters:ByteArryaToBitmapImageConverter x:Key="ByteArrayToImage"/>
 
+        <Image Source="Resources/trash_26px.png" x:Key="TrashImage" Width="20" Height="20"/>
+        <Image Source="Resources/pen_26px.png" x:Key="PenImage" Width="20" Height="20" />
+
         <Style x:Key="NavButton" TargetType="Button">
             <Style.Triggers>
                 <Trigger Property="IsFocused" Value="True">
@@ -55,41 +58,7 @@
 
         <Style x:Key="ListEstates" TargetType="ListBox">
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="ItemsSource" Value="{Binding Estates}"/>
             <Setter Property="ItemContainerStyle" Value="{StaticResource CustomListBoxItem}"/>
-            <Setter Property="ItemTemplate">
-                <Setter.Value>
-                    <!-- Le DataContext devient Transaction-->
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="0.5*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="{Binding Estate.Picture, Converter={StaticResource ByteArrayToImage}}" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Stretch="Fill"/>
-                            <TextBlock Text="{Binding Estate.Type}" Grid.Column="1" Grid.Row="0" FontWeight="UltraBold"/>
-                            <TextBlock Text=" to " Grid.Column="2" Grid.Row="0"/>
-                            <TextBlock Text="{Binding Type}" Grid.Column="3" Grid.Row="0" FontWeight="UltraBold"/>
-
-                            <Button Content="Del." Grid.Row="0" Grid.Column="4"/>
-                            <Button Content="Mod." Grid.Row="0" Grid.Column="5"/>
-                            <TextBlock Text="{Binding Estate.City}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5"/>
-                            <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5"/>
-                            <TextBlock Text="{Binding Description}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5"/>
-                        </Grid>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
         </Style>
 
         <Style x:Key="CustomTextField" TargetType="TextBox">
@@ -120,6 +89,7 @@
                 <x:Type TypeName="nsEnums:TypeTransaction"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+
         <ControlTemplate x:Key="SpecialButtonTemplate" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" CornerRadius="30,0,30,0">
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -147,6 +117,16 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <Style x:Key="AddModifyButton" TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="26"/>
+            <Setter Property="Width" Value="26"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
 
     </Application.Resources>
 </Application>
