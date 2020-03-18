@@ -9,12 +9,12 @@ namespace EstateManager.ViewModels
     class EstateViewModel
     {
 
-        public ObservableCollection<Estate> Estates { get; set; }
+        public ObservableCollection<Transaction> Transactions { get; set; }
         private EstateManagerContext dbContext;
 
         public EstateViewModel()
         {
-            Estates = new ObservableCollection<Estate>();
+            Transactions = new ObservableCollection<Transaction>();
             dbContext = EstateManagerContext.Current;
         }
 
@@ -30,6 +30,32 @@ namespace EstateManager.ViewModels
         {
             var windowAdd = new Views.AddTransaction();
             windowAdd.ShowDialog();
+        }
+
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickDelete);
+            }
+        }
+
+        void clickDelete()
+        {
+            MessageBox.Show("Je veux delete");
+        }
+
+        public ICommand ModifyCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickModify);
+            }
+        }
+
+        void clickModify()
+        {
+            MessageBox.Show("Je veux modify");
         }
     }
 }

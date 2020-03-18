@@ -10,17 +10,41 @@
       Title="testItemLayout">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="89*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="229*"/>
+            <ColumnDefinition Width="114*"/>
+            <ColumnDefinition Width="37*"/>
             <ColumnDefinition Width="87*"/>
-            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="219*"/>
+            <ColumnDefinition Width="114*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="E:\image\azda.jpg" Height="260" Width="Auto" HorizontalAlignment="Left" Margin="10,20,0,20"/>
-        <TextBlock HorizontalAlignment="Left"  Margin="275,20,0,0" TextWrapping="Wrap" Text="House to Buy" VerticalAlignment="Top" Width="266.172" FontSize="18" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left"  Margin="275,131.972,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149.027" FontSize="18" Foreground="White"><Run FontWeight="Bold" Text="T"/><Run FontWeight="Bold" Text="own"/><Run FontWeight="Bold" Text=" "/><Run Text=": Oyonnax"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left"  Margin="275,48.94,0,0" TextWrapping="Wrap" Text="Le Bon Titre" VerticalAlignment="Top" Width="149.027" FontSize="18" FontWeight="Bold" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left"  Margin="275,160.912,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515" FontSize="18" Height="119.088" Foreground="White" Grid.ColumnSpan="2"><Run Text="Description :"/><Run Text=" "/><Run Text="Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme"/></TextBlock>
-        <Button Content="x" HorizontalAlignment="Center" Height="40" Margin="8.8,20,55,240" VerticalAlignment="Center" Width="40" Foreground="White" Background="#FFE74C3C" FontSize="22" BorderBrush="{x:Null}" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button Content="I" HorizontalAlignment="Center" Height="40" Margin="53.8,20,10,240" VerticalAlignment="Center" Width="40" Foreground="White" Background="#FF27AE60" FontSize="22" BorderBrush="{x:Null}" Grid.Column="1"/>
+        <Image Source="C:\Users\yolos\OneDrive\Images\thomas-the-train.jpg" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" Margin="2"/>
+        <TextBlock Text="Appartement" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
+        <TextBlock Text=" to " Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Foreground="White"/>
+        <TextBlock Text="Rent" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
 
+        <Button Content="{StaticResource TrashImage}" Background="Red" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="-50,0,0,0">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="{StaticResource PenImage}" Background="Orange" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="50,0,0,0">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBlock Text="Ville" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5" Margin="10,10,10,10" Foreground="White"/>
+        <TextBlock Text="Titre" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" Margin="10,10,10,10" Foreground="White"/>
+        <TextBlock Text="Description" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="10,10,10,10" Foreground="White"/>
     </Grid>
 </Page>
