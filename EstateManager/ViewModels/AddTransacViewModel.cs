@@ -13,7 +13,7 @@ namespace EstateManager.ViewModels
     class AddTransacViewModel : BaseNotifyPropertyChanged
     {
         private EstateManagerContext dbContext = EstateManagerContext.Current;
-
+        private Window Parent;
 
 
         //public ObservableCollection<Person> People
@@ -24,8 +24,9 @@ namespace EstateManager.ViewModels
 
         public static ObservableCollection<Person> People { get; set; } = new ObservableCollection<Person>();
 
-        public AddTransacViewModel()
+        public AddTransacViewModel(Window parent)
         {
+            Parent = parent;
             if (People.Count != 0)
                 return;
 
@@ -73,6 +74,7 @@ namespace EstateManager.ViewModels
         public int FloorNumber { get; set; }
         public int CarbonFootPrint { get; set; }
         public int EnergeticPerformance { get; set; }
+        public string City { get; set; }
         public Person Commercial { get; set; }
 
         public Photo Photo
@@ -91,6 +93,7 @@ namespace EstateManager.ViewModels
 
         void clickAdd()
         {
+            Photo.Person = Commercial;
 
             Estate estateToBeAdded = new Estate()
             {
@@ -100,17 +103,15 @@ namespace EstateManager.ViewModels
                 Surface = Surface,
                 Address = Address,
                 ZipCode = ZipCode,
+                City=City,
                 FloorNumber = FloorNumber,
                 CarbonFootPrint = CarbonFootPrint,
+                Type = EstateType,
                 EnergeticPerformance = EnergeticPerformance,
                 CommercialId = Commercial.Id,
                 Photos = new List<Photo>
                 {
-                    new Photo()
-                    {
-                        Picture=Photo,
-                        PersonId=Commercial.Id
-                    }
+                    Photo
                 }
 
             };
@@ -137,9 +138,8 @@ namespace EstateManager.ViewModels
             dbContext.Add(estateToBeAdded);
             dbContext.Add(transactionToBeAdded);
             dbContext.SaveChanges();
-            //dbContext.SaveChanges();
+            Parent.Close();
 
-            //Ajouter la transaction et l'estate dans la BD
         }
 
         public ICommand PickImageCommand
@@ -160,9 +160,10 @@ namespace EstateManager.ViewModels
             if (result == true)
             {
                 string imagePath = dlg.FileName;
+                Photo = new Photo();
                 Photo.Picture = ImageToByteArray(Image.FromFile(imagePath));
                 Photo.ShootingDate = File.GetCreationTime(imagePath);
-                Photo.PersonId = Commercial.Id;
+                
             }
         }
 

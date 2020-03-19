@@ -11,7 +11,7 @@ namespace EstateManager.Views
     {
         public AddTransaction()
         {
-            DataContext = new ViewModels.AddTransacViewModel();
+            DataContext = new ViewModels.AddTransacViewModel(this);
             InitializeComponent();
         }
 

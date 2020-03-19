@@ -83,15 +83,15 @@
         <TextBox ToolTip="Publication date" Text="{Binding PubDate}" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
         <!--Si possible remplacer avec une datePicker comme sur Android -->
         <TextBox ToolTip="Transaction date"  Text="{Binding TransacDate}" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
-        <ComboBox ToolTip="Transaction type" Grid.Row="6" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType}"/>
+        <ComboBox ToolTip="Transaction type" Grid.Row="6" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType,UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox ToolTip="Price"  Text="{Binding Price}" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Fees" Text="{Binding Fees}" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
         <!--<TextBox ToolTip="Prop Id" Text="{Binding PropId}" Grid.Row="9" Style="{StaticResource CustomTextField}"/>-->
 
-        <ComboBox ItemsSource="{Binding People}" ToolTip="Owner" Grid.Row="9" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Owner}"/>
+        <ComboBox ItemsSource="{Binding People}" ToolTip="Owner" Grid.Row="9" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Owner,UpdateSourceTrigger=PropertyChanged}"/>
         
         <!--<TextBox ToolTip="Client Id" Text="{Binding CliId}" Grid.Row="10" Style="{StaticResource CustomTextField}"/>-->
-        <ComboBox ItemsSource="{Binding People}" ToolTip="Client" Grid.Row="10" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Client}"/>
+        <ComboBox ItemsSource="{Binding People}" ToolTip="Client" Grid.Row="10" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Client,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Image Grid.Row="11" Grid.RowSpan="2" Stretch="Uniform" Source="{Binding Path=Photo.Picture, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
         <Button ToolTip="Add this transaction" Grid.Row="13" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
@@ -99,7 +99,7 @@
         <Rectangle Grid.Column="1" Grid.Row="1" Grid.RowSpan="13" Fill="Black"/>
 
         <TextBox ToolTip="Reference"  Text="{Binding Reference}" Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomTextField}"/>
-        <ComboBox ToolTip="Estate type"  Grid.Column="2" Grid.Row="2" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}" SelectedItem="{Binding EstateType}"/>
+        <ComboBox ToolTip="Estate type"  Grid.Column="2" Grid.Row="2" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}" SelectedItem="{Binding EstateType,UpdateSourceTrigger=PropertyChanged}"/>
         <Button ToolTip="Choose photo" Grid.Column="2" Grid.Row="3" Content="Pick Image" Style="{StaticResource CustomButton}" Command="{Binding PickImageCommand}"/>
         <TextBox ToolTip="Floor count" Text="{Binding FloorCount}" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
@@ -110,7 +110,7 @@
         <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Carbon footprint" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
-        <ComboBox ItemsSource="{Binding People}" ToolTip="Commercial" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Commercial}"/>
+        <ComboBox ItemsSource="{Binding People}" ToolTip="Commercial" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Commercial,UpdateSourceTrigger=PropertyChanged}"/>
         <!--<TextBox ToolTip="Comercial Id" Text="{Binding CommercialId}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>-->
     </Grid>
 </Window>

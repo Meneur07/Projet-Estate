@@ -30,7 +30,6 @@ namespace EstateManager.ViewModels
             foreach (var trans in transList)
             {
                 Transactions.Add(trans);
-                trans.Estate.Photos.First();
             }
 
             

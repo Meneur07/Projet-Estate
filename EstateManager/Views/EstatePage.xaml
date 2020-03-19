@@ -38,7 +38,7 @@
                             <ColumnDefinition Width="219*"/>
                             <ColumnDefinition Width="114*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="{Binding Estate.Photos[0], Converter={StaticResource ByteArrayToImage},UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" Margin="2"/>
+                        <Image Source="{Binding Estate.MainPhoto.Picture, Converter={StaticResource ByteArrayToImage},UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" Margin="2"/>
                         <TextBlock Text="{Binding Estate.Type}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
                         <TextBlock Text=" to " Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Foreground="White"/>
                         <TextBlock Text="{Binding Type}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
@@ -50,7 +50,7 @@
                                 </Style>
                             </Button.Resources>
                         </Button>
-                        <Button Content="{StaticResource PenImage}" Background="Orange" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="50,0,0,0" Command="{Binding DataContext.ModifyCommand}">
+                        <Button Content="{StaticResource PenImage}" Background="Orange" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="50,0,0,0" Command="{Binding Path=DataContext.ModifyCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>

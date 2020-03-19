@@ -25,13 +25,16 @@ namespace EstateManager.Models
             set { SetProperty<TypeEstate>(value); }
         }
 
-
-
-
         public virtual ICollection<Photo> Photos
         {
             get { return GetProperty<ICollection<Photo>>(); }
             set { SetProperty<ICollection<Photo>>(value); }
+        }
+
+        [NotMapped]
+        public Photo MainPhoto
+        {
+            get { return Photos.First(); }
         }
 
 
