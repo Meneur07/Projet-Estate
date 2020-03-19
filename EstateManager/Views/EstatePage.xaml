@@ -40,29 +40,60 @@
                         </Grid.ColumnDefinitions>
                         <Image Source="{Binding Estate.MainPhoto.Picture, Converter={StaticResource ByteArrayToImage},UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" />
                         <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White">
-
-
                             <TextBlock.Text>
                                 <MultiBinding StringFormat=" {0} to {1} ">
                                     <Binding  Path="Estate.Type"/>
                                     <Binding Path="Type"/>
                                 </MultiBinding>
                             </TextBlock.Text>
-
                         </TextBlock>
 
 
-                        <Button Content="{StaticResource TrashImage}" Background="Red" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="-50,0,0,0" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
+                        <Button Background="{StaticResource TrashImageBrush}" ToolTip="Remove this transaction" Grid.Column="5" Margin="-50,0,0,0" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
                                 </Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource DelModifyButton}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" TargetName="border" Value="Red"/>
+                                                        <Setter Property="Content" Value="{StaticResource TrashImage}"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
                             </Button.Resources>
                         </Button>
-                        <Button Content="{StaticResource PenImage}" Background="Orange" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="50,0,0,0" Command="{Binding Path=DataContext.ModifyCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
+                        <Button Background="{StaticResource PenImageBrush}" ToolTip="Modify this transaction" Grid.Column="5" Margin="50,0,0,0" Command="{Binding Path=DataContext.ModifyCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource DelModifyButton}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Background" Value="DarkGoldenrod" TargetName="border"/>
+                                                        <Setter Property="Content" Value="{StaticResource PenImage}"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
                                 </Style>
                             </Button.Resources>
                         </Button>
@@ -87,7 +118,7 @@
         <ComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource CustomComboBox}"/>
         <ComboBox Grid.Row="0" Grid.Column="2" Style="{StaticResource CustomComboBox}"/>
         <ComboBox Grid.Row="0" Grid.Column="3" Style="{StaticResource CustomComboBox}"/>
-        
+
         <Button Content="ADD" Grid.Row="0" Grid.Column="4" Style="{StaticResource CustomButton}"  Command="{Binding AddCommand}" Background="#27AE60" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
 
 

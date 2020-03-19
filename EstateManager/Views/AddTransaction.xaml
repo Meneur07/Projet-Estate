@@ -74,7 +74,7 @@
                 </Button.Resources>
             </Button>
         </Grid>
-        <TextBlock Text="   Add transaction" Grid.Column="0" Grid.Row="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+        <TextBlock Text="   Add a transaction" Grid.Column="0" Grid.Row="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
 
 
         <TextBlock ToolTip="Estate reference" Text="{Binding Reference, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0"/>
