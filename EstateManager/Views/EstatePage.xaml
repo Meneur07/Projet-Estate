@@ -34,14 +34,23 @@
                             <ColumnDefinition Width="229*"/>
                             <ColumnDefinition Width="114*"/>
                             <ColumnDefinition Width="37*"/>
-                            <ColumnDefinition Width="87*"/>
-                            <ColumnDefinition Width="219*"/>
+                            <!--<ColumnDefinition Width="87*"/>
+                            <ColumnDefinition Width="219*"/>-->
                             <ColumnDefinition Width="114*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="{Binding Estate.MainPhoto.Picture, Converter={StaticResource ByteArrayToImage},UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" Margin="2"/>
-                        <TextBlock Text="{Binding Estate.Type}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
-                        <TextBlock Text=" to " Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Foreground="White"/>
-                        <TextBlock Text="{Binding Type}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White"/>
+                        <Image Source="{Binding Estate.MainPhoto.Picture, Converter={StaticResource ByteArrayToImage},UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" />
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraBold" Height="16" Foreground="White">
+
+
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat=" {0} to {1} ">
+                                    <Binding  Path="Estate.Type"/>
+                                    <Binding Path="Type"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+
+                        </TextBlock>
+
 
                         <Button Content="{StaticResource TrashImage}" Background="Red" Grid.Column="5" Style="{StaticResource AddModifyButton}" Margin="-50,0,0,0" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
                             <Button.Resources>

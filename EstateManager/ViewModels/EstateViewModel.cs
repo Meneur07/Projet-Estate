@@ -26,13 +26,19 @@ namespace EstateManager.ViewModels
             Transactions = new ObservableCollection<Transaction>();
             dbContext = EstateManagerContext.Current;
 
+
+            UpdateContent();
+        }
+
+
+        void UpdateContent()
+        {
+            Transactions.Clear();
             var transList = dbContext.Transactions.Include(b => b.Estate).ThenInclude(est => est.Photos).ToList();
             foreach (var trans in transList)
             {
                 Transactions.Add(trans);
             }
-
-            
         }
 
         public ICommand AddCommand
@@ -47,6 +53,8 @@ namespace EstateManager.ViewModels
         {
             var windowAdd = new Views.AddTransaction();
             windowAdd.ShowDialog();
+            UpdateContent();
+
         }
 
         public ICommand DeleteCommand

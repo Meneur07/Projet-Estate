@@ -81,16 +81,16 @@
         <TextBox ToolTip="Title" Text="{Binding Title}" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Description" Text="{Binding Description}" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Publication date" Text="{Binding PubDate}" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
-        <!--Si possible remplacer avec une datePicker comme sur Android -->
+
         <TextBox ToolTip="Transaction date"  Text="{Binding TransacDate}" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
         <ComboBox ToolTip="Transaction type" Grid.Row="6" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType,UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox ToolTip="Price"  Text="{Binding Price}" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
         <TextBox ToolTip="Fees" Text="{Binding Fees}" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
-        <!--<TextBox ToolTip="Prop Id" Text="{Binding PropId}" Grid.Row="9" Style="{StaticResource CustomTextField}"/>-->
+
 
         <ComboBox ItemsSource="{Binding People}" ToolTip="Owner" Grid.Row="9" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Owner,UpdateSourceTrigger=PropertyChanged}"/>
         
-        <!--<TextBox ToolTip="Client Id" Text="{Binding CliId}" Grid.Row="10" Style="{StaticResource CustomTextField}"/>-->
+       
         <ComboBox ItemsSource="{Binding People}" ToolTip="Client" Grid.Row="10" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Client,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Image Grid.Row="11" Grid.RowSpan="2" Stretch="Uniform" Source="{Binding Path=Photo.Picture, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
