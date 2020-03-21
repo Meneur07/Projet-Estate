@@ -26,12 +26,11 @@ namespace EstateManager.ViewModels
             Transactions = new ObservableCollection<Transaction>();
             dbContext = EstateManagerContext.Current;
 
-
-            UpdateContent();
+            updateContent();
         }
 
 
-        void UpdateContent()
+        void updateContent()
         {
             Transactions.Clear();
             var transList = dbContext.Transactions.Include(b => b.Estate).ThenInclude(est => est.Photos).ToList();
@@ -53,34 +52,36 @@ namespace EstateManager.ViewModels
         {
             var windowAdd = new Views.AddTransaction();
             windowAdd.ShowDialog();
-            UpdateContent();
-
+            updateContent();
         }
 
         public ICommand DeleteCommand
         {
             get
             {
-                return new Commands.DelegateCommand(clickDelete);
+                return new Commands.DelegateCommand<int>(clickDelete);
             }
         }
 
-        void clickDelete()
+        void clickDelete(int idEstate)
         {
-            MessageBox.Show("Je veux delete");
+            dbContext.Transactions.Remove(dbContext.Transactions.Where(t => t.Reference == idEstate).FirstOrDefault());
+            dbContext.Estates.Remove(dbContext.Estates.Find(idEstate));
+            dbContext.SaveChanges();
+            updateContent();
         }
 
         public ICommand ModifyCommand
         {
             get
             {
-                return new Commands.DelegateCommand(clickModify);
+                return new Commands.DelegateCommand<int>(clickModify);
             }
         }
 
-        void clickModify()
+        void clickModify(int idEstate)
         {
-            MessageBox.Show("Je veux modify");
+            MessageBox.Show("Je veux modify l'estate avec l'id : " + idEstate);
         }
     }
 }

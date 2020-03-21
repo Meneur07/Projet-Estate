@@ -34,8 +34,6 @@
                             <ColumnDefinition Width="229*"/>
                             <ColumnDefinition Width="114*"/>
                             <ColumnDefinition Width="37*"/>
-                            <!--<ColumnDefinition Width="87*"/>
-                            <ColumnDefinition Width="219*"/>-->
                             <ColumnDefinition Width="114*"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="{Binding Estate.MainPhoto.Picture, Converter={StaticResource ByteArrayToImage},UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Stretch="Uniform" />
@@ -49,7 +47,7 @@
                         </TextBlock>
 
 
-                        <Button Background="{StaticResource TrashImageBrush}" ToolTip="Remove this transaction" Grid.Column="5" Margin="-50,0,0,0" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
+                        <Button Background="{StaticResource TrashImageBrush}" ToolTip="Remove this transaction" Grid.Column="5" Margin="-50,0,0,0" Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding Estate.Reference}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
@@ -73,7 +71,7 @@
                                 </Style>
                             </Button.Resources>
                         </Button>
-                        <Button Background="{StaticResource PenImageBrush}" ToolTip="Modify this transaction" Grid.Column="5" Margin="50,0,0,0" Command="{Binding Path=DataContext.ModifyCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}">
+                        <Button Background="{StaticResource PenImageBrush}" ToolTip="Modify this transaction" Grid.Column="5" Margin="50,0,0,0" Command="{Binding Path=DataContext.ModifyCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding Estate.Reference}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5"/>
