@@ -83,5 +83,18 @@ namespace EstateManager.ViewModels
         {
             MessageBox.Show("Je veux modify l'estate avec l'id : " + idEstate);
         }
+
+        public ICommand DetailsCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand<int>(clickItem);
+            }
+        }
+
+        void clickItem(int idTransac)
+        {
+            MessageBox.Show(idTransac.ToString());
+        }
     }
 }

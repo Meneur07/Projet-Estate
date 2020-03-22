@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -44,7 +45,11 @@ namespace EstateManager.Views
 
         private void Move(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            try
+            {
+                DragMove();
+            }
+            catch(Exception) { }
         }
     }
 }
