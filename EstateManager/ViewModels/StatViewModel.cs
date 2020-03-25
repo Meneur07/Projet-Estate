@@ -24,7 +24,6 @@ namespace EstateManager.ViewModels
             int nbPostsLastMonth = dbContext.Transactions.Where(t => t.PublicationDate > DateTime.Now.AddMonths(-1)).Count();
 
             int nbPostsLastYear = dbContext.Transactions.Where(t => t.PublicationDate > DateTime.Now.AddYears(-1)).Count();
-            MessageBox.Show(nbPostsLastMonth.ToString());
 
 
 
