@@ -27,9 +27,9 @@ namespace EstateManager.ViewModels
         private Models.Person GeneratePerson()
         {
             string[] arrayNames = { "Jean", "Paule", "Pierre", "Jacqueline", "Michel", "David", "Léo", "Claudette", "Cloé", "Gertrude" };
-            
 
-            
+
+
             string firstName = arrayNames[r.Next(arrayNames.Length)];
             string lastName = arrayNames[r.Next(arrayNames.Length)];
             string cellPhone = "";
@@ -75,19 +75,18 @@ namespace EstateManager.ViewModels
             }
             dbContext.SaveChanges();
         }
-        
+
 
         // Transaction part
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime PubDate { get; set; }
-        public DateTime TransacDate { get; set; }
         public TypeTransaction TransacType { get; set; }
         public double Price { get; set; }
         public double Fees { get; set; }
         public Person Owner { get; set; }
         public Person Client { get; set; }
-       
+
 
 
         //Estate part
@@ -135,7 +134,7 @@ namespace EstateManager.ViewModels
                 Surface = Surface,
                 Address = Address,
                 ZipCode = ZipCode,
-                City=City,
+                City = City,
                 FloorNumber = FloorNumber,
                 CarbonFootPrint = CarbonFootPrint,
                 Type = EstateType,
@@ -152,26 +151,21 @@ namespace EstateManager.ViewModels
             {
                 Title = Title,
                 Description = Description,
-                PublicationDate = PubDate,
-                TransactionDate = TransacDate,
+                PublicationDate = DateTime.Now,
                 Type = TransacType,
                 Price = Price,
                 Fees = Fees,
                 Estate = estateToBeAdded,
-                Owner=Owner,
-                Client=Client
+                Owner = Owner,
+                Client = Client
 
             };
-
-
-
 
 
             dbContext.Add(estateToBeAdded);
             dbContext.Add(transactionToBeAdded);
             dbContext.SaveChanges();
             Parent.Close();
-
         }
 
         public ICommand PickImageCommand
@@ -195,7 +189,7 @@ namespace EstateManager.ViewModels
                 Photo = new Photo();
                 Photo.Picture = ImageToByteArray(Image.FromFile(imagePath));
                 Photo.ShootingDate = File.GetCreationTime(imagePath);
-                
+
             }
         }
 
