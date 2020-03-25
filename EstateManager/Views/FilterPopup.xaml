@@ -1,0 +1,121 @@
+﻿<Window x:Class="EstateManager.Views.FilterPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EstateManager.Views"
+        mc:Ignorable="d"
+        WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
+        MouseDown="Move"
+        Title="FilterPopup" Height="450" Width="800">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="auto" Width="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.75*"/>
+            <ColumnDefinition Width="1.25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="6"  Fill="#95A5A6"/>
+        <Grid Grid.Row="0" Grid.Column="5" HorizontalAlignment="Right" Margin="0,0,10,0">
+            <Button Margin="46,0,0,0" Style="{StaticResource WindowButtons}" Click="Maximize">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#E67E22" Offset="0.0" />
+                        <GradientStop Color="#D35400" Offset="1" />
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Margin="92,0,0,0" Style="{StaticResource WindowButtons}" Click="Close">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#E74C3C" Offset="0.0" />
+                        <GradientStop Color="#C0392B" Offset="1" />
+
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Style="{StaticResource WindowButtons}" Click="Minimize">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#F1C40F" Offset="0.0" />
+                        <GradientStop Color="#F39C12" Offset="1" />
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <TextBlock Text="Estate Manager" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" FontSize="16" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Option" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" FontSize="16"  HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding Source={StaticResource TypesEstate}}" Style="{StaticResource CustomComboBox}" SelectedItem="{Binding EstateTypeFilter,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedIndex="0"/>
+
+
+        <TextBlock Text="Localisation" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding LocalisationFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="2" Background="#BDC3C7" VerticalAlignment="Center"/>
+
+        <TextBlock Text="Max Budget" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding MaxBudgetFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat=N2}" Grid.Row="3" Grid.Column="2" Background="#BDC3C7" VerticalAlignment="Center"/>
+
+        <TextBlock Text="Min Surface" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding MinSurfaceFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,StringFormat=N2}" Grid.Row="4" Grid.Column="2" Background="#BDC3C7" VerticalAlignment="Center"/>
+
+
+
+
+
+
+        <TextBlock Text="Type" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="1" Grid.Column="5" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" Style="{StaticResource CustomComboBox}" SelectedItem="{Binding TransactionTypeFilter,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedIndex="0"/>
+
+
+
+        <TextBlock Text="Floors Count" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="2" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding FloorsCountFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"    Grid.Row="2" Grid.Column="5" Background="#BDC3C7" VerticalAlignment="Center"/>
+
+        <TextBlock Text="Rooms Count" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding RoomsCountFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="5" Background="#BDC3C7" VerticalAlignment="Center"/>
+
+        <TextBlock Text="Bathrooms Count" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding BathroomsCountFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="5" Background="#BDC3C7" VerticalAlignment="Center"/>
+
+
+        <TextBlock Text="Floor Number" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" FontSize="16" HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding FloorNumberFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" Background="#BDC3C7" VerticalAlignment="Center"/>
+
+
+        <Button Content="CANCEL" Grid.Row="5" Grid.Column="4" Style="{StaticResource CustomButton}" Click="Close" Background="#C0392B" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
+        <Button Content="APPLY" Grid.Row="5" Grid.Column="5" Style="{StaticResource CustomButton}" Background="#27AE60" Foreground="White" Command="{Binding ApplyFilterCommand}" Template="{DynamicResource SpecialButtonTemplate}" />
+
+
+    </Grid>
+</Window>

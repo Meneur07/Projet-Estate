@@ -200,6 +200,9 @@
     <Compile Include="Views\EstatePage.xaml.cs">
       <DependentUpon>EstatePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FilterPopup.xaml.cs">
+      <DependentUpon>FilterPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StatPage.xaml.cs">
       <DependentUpon>StatPage.xaml</DependentUpon>
     </Compile>
@@ -223,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EstatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FilterPopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
