@@ -61,7 +61,7 @@
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Background" TargetName="border" Value="Red"/>
+                                                        <Setter Property="Background" TargetName="border" Value="#C0392B"/>
                                                         <Setter Property="Content" Value="{StaticResource TrashImage}"/>
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
@@ -85,7 +85,7 @@
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Background" Value="DarkGoldenrod" TargetName="border"/>
+                                                        <Setter Property="Background" Value="#8E44AD" TargetName="border"/>
                                                         <Setter Property="Content" Value="{StaticResource PenImage}"/>
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
@@ -111,6 +111,7 @@
         </ListBox>
 
 
+        
         <Rectangle  Grid.Row="0" Grid.ColumnSpan="5" Fill="#BDC3C7">
 
             <Rectangle.Effect>
@@ -118,11 +119,15 @@
             </Rectangle.Effect>
 
         </Rectangle>
-
+        <CheckBox IsChecked="{Binding ShouldApplyFilter}" Content="ACTIVATE FILTERS" Grid.Row="0" Foreground="White" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <ComboBox Grid.Row="0" Grid.Column="0" Style="{StaticResource CustomComboBox}"/>
-        <ComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource CustomComboBox}"/>
-        <ComboBox Grid.Row="0" Grid.Column="2" Style="{StaticResource CustomComboBox}"/>
-        <ComboBox Grid.Row="0" Grid.Column="3" Style="{StaticResource CustomComboBox}"/>
+
+
+
+
+        <Button Content="FILTERS" Grid.Row="0" Grid.Column="3" Style="{StaticResource CustomButton}"  Command="{Binding FilterCommand}" Background="#D35400" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
+
+
 
         <Button Content="ADD" Grid.Row="0" Grid.Column="4" Style="{StaticResource CustomButton}"  Command="{Binding AddCommand}" Background="#27AE60" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
 
