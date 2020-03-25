@@ -25,6 +25,14 @@ namespace EstateManager.Models
             set { SetProperty<TypeEstate>(value); }
         }
 
+
+        public int roomCount
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty<int>(value); }
+        }
+
+
         public virtual ICollection<Photo> Photos
         {
             get { return GetProperty<ICollection<Photo>>(); }

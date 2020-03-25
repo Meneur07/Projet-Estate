@@ -3,14 +3,16 @@ using System;
 using EstateManager.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-    partial class EstateManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20200325131751_ajoutRoomCount")]
+    partial class ajoutRoomCount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
