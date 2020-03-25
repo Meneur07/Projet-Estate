@@ -98,6 +98,7 @@ namespace EstateManager.ViewModels
 
         public TypeEstate EstateType { get; set; }
         public int FloorCount { get; set; }
+        public int RoomsCount { get; set; }
         public int BathroomCount { get; set; }
         public float Surface { get; set; }
         public string Address { get; set; }
@@ -130,6 +131,7 @@ namespace EstateManager.ViewModels
             {
                 Reference = Reference,
                 FloorCount = FloorCount,
+                RoomsCount=RoomsCount,
                 BathroomCount = BathroomCount,
                 Surface = Surface,
                 Address = Address,

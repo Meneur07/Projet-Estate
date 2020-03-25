@@ -25,7 +25,8 @@
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
@@ -89,8 +90,8 @@
         <ComboBox ItemsSource="{Binding People}" ToolTip="Owner" Grid.Row="7" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Owner,UpdateSourceTrigger=PropertyChanged}"/>
         <ComboBox ItemsSource="{Binding People}" ToolTip="Client" Grid.Row="8" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Client,UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Image Grid.Row="9" Grid.RowSpan="4" Stretch="Uniform" Source="{Binding Path=Photo.Picture, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button ToolTip="Add this transaction" Grid.Row="13" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
+        <Image Grid.Row="9" Grid.RowSpan="5" Stretch="Uniform" Source="{Binding Path=Photo.Picture, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button ToolTip="Add this transaction" Grid.Row="14" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
 
         <Rectangle Grid.Column="1" Grid.Row="1" Grid.RowSpan="13" Fill="Black"/>
 
@@ -98,14 +99,15 @@
         <ComboBox ToolTip="Estate type"  Grid.Column="2" Grid.Row="2" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}" SelectedItem="{Binding EstateType,UpdateSourceTrigger=PropertyChanged}"/>
         <Button ToolTip="Choose photo" Grid.Column="2" Grid.Row="3" Content="Pick Image" Style="{StaticResource CustomButton}" Command="{Binding PickImageCommand}"/>
         <TextBox ToolTip="Floor count" Text="{Binding FloorCount}" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Surface" Text="{Binding Surface}" Grid.Column="2" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Address" Text="{Binding Address}" Grid.Column="2" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Zip code" Text="{Binding ZipCode}" Grid.Column="2" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="City" Text="{Binding City}" Grid.Column="2" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Carbon footprint" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
-        <ComboBox ItemsSource="{Binding People}" ToolTip="Commercial" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Commercial,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox ToolTip="Rooms count" Text="{Binding RoomsCount}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount}" Grid.Column="2" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Surface" Text="{Binding Surface}" Grid.Column="2" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Address" Text="{Binding Address}" Grid.Column="2" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Zip code" Text="{Binding ZipCode}" Grid.Column="2" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="City" Text="{Binding City}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Carbon footprint" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>
+        <ComboBox ItemsSource="{Binding People}" ToolTip="Commercial" Grid.Column="2" Grid.Row="14" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Commercial,UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Window>
