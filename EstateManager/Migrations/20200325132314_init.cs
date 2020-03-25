@@ -46,6 +46,7 @@ namespace EstateManager.Migrations
                     Reference = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Type = table.Column<int>(nullable: false),
+                    RoomsCount = table.Column<int>(nullable: false),
                     FloorCount = table.Column<int>(nullable: false),
                     BathroomCount = table.Column<int>(nullable: false),
                     Surface = table.Column<float>(nullable: false),

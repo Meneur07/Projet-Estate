@@ -46,6 +46,9 @@ namespace EstateManager.Migrations
                     b.Property<int>("FloorNumber")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("RoomsCount")
+                        .HasColumnType("INTEGER");
+
                     b.Property<float>("Surface")
                         .HasColumnType("REAL");
 
@@ -54,9 +57,6 @@ namespace EstateManager.Migrations
 
                     b.Property<string>("ZipCode")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("roomCount")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Reference");
 

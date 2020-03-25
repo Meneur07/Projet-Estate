@@ -170,13 +170,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ByteArrayToBitmapImageConverter.cs" />
-    <Compile Include="Migrations\20200318110431_init.cs" />
-    <Compile Include="Migrations\20200318110431_init.designer.cs">
-      <DependentUpon>20200318110431_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200325131751_ajoutRoomCount.cs" />
-    <Compile Include="Migrations\20200325131751_ajoutRoomCount.designer.cs">
-      <DependentUpon>20200325131751_ajoutRoomCount.cs</DependentUpon>
+    <Compile Include="Migrations\20200325132314_init.cs" />
+    <Compile Include="Migrations\20200325132314_init.designer.cs">
+      <DependentUpon>20200325132314_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
     <Compile Include="ViewModels\AddTransacViewModel.cs" />

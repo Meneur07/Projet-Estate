@@ -26,7 +26,7 @@ namespace EstateManager.Models
         }
 
 
-        public int roomCount
+        public int RoomsCount
         {
             get { return GetProperty<int>(); }
             set { SetProperty<int>(value); }

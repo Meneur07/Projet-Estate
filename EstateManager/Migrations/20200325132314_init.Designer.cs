@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-    [Migration("20200325131751_ajoutRoomCount")]
-    partial class ajoutRoomCount
+    [Migration("20200325132314_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,6 +48,9 @@ namespace EstateManager.Migrations
                     b.Property<int>("FloorNumber")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("RoomsCount")
+                        .HasColumnType("INTEGER");
+
                     b.Property<float>("Surface")
                         .HasColumnType("REAL");
 
@@ -56,9 +59,6 @@ namespace EstateManager.Migrations
 
                     b.Property<string>("ZipCode")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("roomCount")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Reference");
 
