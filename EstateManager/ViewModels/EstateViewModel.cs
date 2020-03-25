@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using EstateManager.Views;
 
 namespace EstateManager.ViewModels
 {
@@ -50,7 +51,7 @@ namespace EstateManager.ViewModels
 
         void clickAdd()
         {
-            var windowAdd = new Views.AddTransaction();
+            var windowAdd = new AddTransaction();
             windowAdd.ShowDialog();
             updateContent();
         }
@@ -81,7 +82,9 @@ namespace EstateManager.ViewModels
 
         void clickModify(int idEstate)
         {
-            MessageBox.Show("Je veux modify l'estate avec l'id : " + idEstate);
+            ModifyTransaction mt = new ModifyTransaction(idEstate);
+            mt.ShowDialog();
+            updateContent();
         }
 
         public ICommand DetailsCommand

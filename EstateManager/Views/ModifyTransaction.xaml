@@ -1,4 +1,4 @@
-﻿<Window x:Class="EstateManager.Views.AddTransaction"
+﻿<Window x:Class="EstateManager.Views.ModifyTransaction"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -75,39 +75,38 @@
                 </Button.Resources>
             </Button>
         </Grid>
-        <TextBlock Text="   Add a transaction" Grid.Column="0" Grid.Row="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+        <TextBlock Text="   Modify this transaction" Grid.Column="0" Grid.Row="0" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
 
 
-        <TextBlock ToolTip="Estate reference" Text="{Binding Reference, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="0"/>
-        <TextBox ToolTip="Title" Text="{Binding Title}" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Description" Text="{Binding Description}" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
+        <TextBlock ToolTip="Estate reference" Text="{Binding Reference}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" TextAlignment="Center"/>
+        <TextBox ToolTip="Title" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Description" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Style="{StaticResource CustomTextField}"/>
 
         <ComboBox ToolTip="Transaction type" Grid.Row="4" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesTransaction}}" SelectedItem="{Binding TransacType,UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox ToolTip="Price"  Text="{Binding Price}" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Fees" Text="{Binding Fees}" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Price"  Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Fees" Text="{Binding Fees, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
 
 
         <ComboBox ItemsSource="{Binding People}" ToolTip="Owner" Grid.Row="7" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Owner,UpdateSourceTrigger=PropertyChanged}"/>
         <ComboBox ItemsSource="{Binding People}" ToolTip="Client" Grid.Row="8" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Client,UpdateSourceTrigger=PropertyChanged}"/>
 
         <Image Grid.Row="9" Grid.RowSpan="5" Stretch="Uniform" Source="{Binding Path=Photo.Picture, Converter={StaticResource ByteArrayToImage}, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button ToolTip="Add this transaction" Grid.Row="14" Content="Add this transaction" Style="{StaticResource CustomButton}" Command="{Binding AddCommand}"/>
+        <Button ToolTip="Modify this transaction" Grid.Row="14" Content="Modify this transaction" Style="{StaticResource CustomButton}" Command="{Binding ModifyCommand}"/>
 
-        <Rectangle Grid.Column="1" Grid.Row="1" Grid.RowSpan="14" Fill="Black"/>
+        <Rectangle Grid.Column="1" Grid.Row="2" Grid.RowSpan="13" Fill="Black"/>
 
-        <TextBox ToolTip="Reference"  Text="{Binding Reference}" Grid.Column="2" Grid.Row="1" Style="{StaticResource CustomTextField}"/>
         <ComboBox ToolTip="Estate type"  Grid.Column="2" Grid.Row="2" Style="{StaticResource CustomComboBox}" ItemsSource="{Binding Source={StaticResource TypesEstate}}" SelectedItem="{Binding EstateType,UpdateSourceTrigger=PropertyChanged}"/>
         <Button ToolTip="Choose photo" Grid.Column="2" Grid.Row="3" Content="Pick Image" Style="{StaticResource CustomButton}" Command="{Binding PickImageCommand}"/>
-        <TextBox ToolTip="Floor count" Text="{Binding FloorCount}" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Rooms count" Text="{Binding RoomsCount}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount}" Grid.Column="2" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Surface" Text="{Binding Surface}" Grid.Column="2" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Address" Text="{Binding Address}" Grid.Column="2" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Zip code" Text="{Binding ZipCode}" Grid.Column="2" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="City" Text="{Binding City}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Carbon footprint" Text="{Binding CarbonFootPrint}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
-        <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Floor count" Text="{Binding FloorCount, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Rooms count" Text="{Binding RoomsCount, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Bathroom count"  Text="{Binding BathroomCount, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="6" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Surface" Text="{Binding Surface, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="7" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Address" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="8" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Zip code" Text="{Binding ZipCode,UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="9" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="City" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="10" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Floor number"  Text="{Binding FloorNumber, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="11" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Carbon footprint" Text="{Binding CarbonFootPrint, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="12" Style="{StaticResource CustomTextField}"/>
+        <TextBox ToolTip="Energetic performance" Text="{Binding EnergeticPerformance, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="13" Style="{StaticResource CustomTextField}"/>
         <ComboBox ItemsSource="{Binding People}" ToolTip="Commercial" Grid.Column="2" Grid.Row="14" Style="{StaticResource CustomComboBox}" DisplayMemberPath="FirstName" SelectedItem="{Binding Commercial,UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Window>

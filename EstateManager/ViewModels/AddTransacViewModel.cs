@@ -7,6 +7,7 @@ using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace EstateManager.ViewModels
 {
@@ -15,16 +16,10 @@ namespace EstateManager.ViewModels
         private EstateManagerContext dbContext = EstateManagerContext.Current;
         private Window Parent;
 
-
-        //public ObservableCollection<Person> People
-        //{
-        //    get { return GetProperty<ObservableCollection<Person>>(); }
-        //    set { SetProperty<ObservableCollection<Person>>(value); }
-        //}
-
-        public static ObservableCollection<Person> People { get; set; } = new ObservableCollection<Person>();
+        public static ObservableCollection<Person> People { get; set; }
         Random r = new Random();
-        private Models.Person GeneratePerson()
+
+        private Person GeneratePerson()
         {
             string[] arrayNames = { "Jean", "Paule", "Pierre", "Jacqueline", "Michel", "David", "Léo", "Claudette", "Cloé", "Gertrude" };
 
@@ -48,7 +43,7 @@ namespace EstateManager.ViewModels
             }
 
 
-            return new Models.Person()
+            return new Person()
             {
                 FirstName = firstName,
                 LastName = lastName,
@@ -63,6 +58,7 @@ namespace EstateManager.ViewModels
         public AddTransacViewModel(Window parent)
         {
             Parent = parent;
+            People = new ObservableCollection<Person>(dbContext.Persons.ToList());
             if (People.Count != 0)
                 return;
 
@@ -70,8 +66,6 @@ namespace EstateManager.ViewModels
             {
                 Person toAdd = GeneratePerson();
                 dbContext.Add(toAdd);
-
-                People.Add(toAdd);
             }
             dbContext.SaveChanges();
         }
@@ -80,7 +74,6 @@ namespace EstateManager.ViewModels
         // Transaction part
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime PubDate { get; set; }
         public TypeTransaction TransacType { get; set; }
         public double Price { get; set; }
         public double Fees { get; set; }

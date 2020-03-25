@@ -174,12 +174,20 @@
     <Compile Include="Migrations\20200325132314_init.designer.cs">
       <DependentUpon>20200325132314_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200325132629_RoomsCount.cs" />
+    <Compile Include="Migrations\20200325132629_RoomsCount.designer.cs">
+      <DependentUpon>20200325132629_RoomsCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
+    <Compile Include="ViewModels\ModifyTransacViewModel.cs" />
     <Compile Include="ViewModels\AddTransacViewModel.cs" />
     <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\EstateViewModel.cs" />
     <Compile Include="ViewModels\StatViewModel.cs" />
+    <Compile Include="Views\ModifyTransaction.xaml.cs">
+      <DependentUpon>ModifyTransaction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddTransaction.xaml.cs">
       <DependentUpon>AddTransaction.xaml</DependentUpon>
     </Compile>
@@ -198,6 +206,10 @@
     <Compile Include="Views\testItemLayout.xaml.cs">
       <DependentUpon>testItemLayout.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\ModifyTransaction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AddTransaction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -61,7 +61,7 @@
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Background" TargetName="border" Value="Red"/>
+                                                        <Setter Property="Background" TargetName="border" Value="#C0392B"/>
                                                         <Setter Property="Content" Value="{StaticResource TrashImage}"/>
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
@@ -85,7 +85,7 @@
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Background" Value="DarkGoldenrod" TargetName="border"/>
+                                                        <Setter Property="Background" Value="#8E44AD" TargetName="border"/>
                                                         <Setter Property="Content" Value="{StaticResource PenImage}"/>
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
