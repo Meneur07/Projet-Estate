@@ -7,23 +7,15 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 using System.Collections.Generic;
-using EstateManager.Views;
 using System;
+using EstateManager.Views;
 
 namespace EstateManager.ViewModels
 {
     class EstateViewModel : BaseNotifyPropertyChanged
     {
-
-
-
-
-
-
-
-
-        public Models.TypeEstate EstateTypeFilter { get; set; }
-        public Models.TypeTransaction TransactionTypeFilter { get; set; }
+        public TypeEstate EstateTypeFilter { get; set; }
+        public TypeTransaction TransactionTypeFilter { get; set; }
         public string LocalisationFilter { get; set; }
         public float MaxBudgetFilter { get; set; }
         public float MinSurfaceFilter { get; set; }
@@ -236,7 +228,8 @@ namespace EstateManager.ViewModels
 
         void clickItem(int idTransac)
         {
-            MessageBox.Show(idTransac.ToString());
+            DetailsWindow details = new DetailsWindow(idTransac);
+            details.Show();
         }
     }
 }

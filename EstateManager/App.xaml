@@ -129,5 +129,9 @@
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
     </Application.Resources>
 </Application>
