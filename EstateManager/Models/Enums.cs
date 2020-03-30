@@ -20,4 +20,6 @@ namespace EstateManager.Models
         Sale,
         Rent
     }
+
+
 }

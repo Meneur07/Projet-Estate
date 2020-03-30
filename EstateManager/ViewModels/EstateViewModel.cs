@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 using System.Collections.Generic;
 using EstateManager.Views;
+using System;
 
 namespace EstateManager.ViewModels
 {
@@ -31,6 +32,25 @@ namespace EstateManager.ViewModels
         public int RoomsCountFilter { get; set; }
         public int BathroomsCountFilter { get; set; }
 
+        public Transaction SelectedTransaction
+        {
+            set
+            {
+                try
+                {
+                    DetailsCommand.Execute(value.Id);
+                }
+                catch (Exception) { }
+            }
+        }
+
+        public int SortSelectedId
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty<int>(value);
+                updateContent();
+            }
+        }
 
         public bool ShouldApplyFilter
         {
@@ -38,7 +58,7 @@ namespace EstateManager.ViewModels
             set {
                 SetProperty<bool>(value);
                     updateContent();
-                    }
+                }
         }
 
 
@@ -66,23 +86,58 @@ namespace EstateManager.ViewModels
 
         void updateContent()
         {
-
+            
             Transactions.Clear();
-            var request = dbContext.Transactions.Include(b => b.Estate).ThenInclude(est => est.Photos);
-            List<Transaction> translist = request.ToList();
+            IQueryable<Transaction> request = dbContext.Transactions.Include(b => b.Estate).ThenInclude(est => est.Photos);
+            
             if (ShouldApplyFilter)
             {
 
-                translist = request.Where(t => t.Price < MaxBudgetFilter || MaxBudgetFilter == 0).
+                request = request.Where(t => t.Price < MaxBudgetFilter || MaxBudgetFilter == 0).
                 Where(b => b.Estate.Surface > MinSurfaceFilter || MinSurfaceFilter == 0).
                 Where(t => t.Type == TransactionTypeFilter && t.Estate.Type == EstateTypeFilter).
                 Where(t => t.Estate.FloorCount == FloorsCountFilter || FloorsCountFilter == 0).
                 Where(t => t.Estate.RoomsCount == RoomsCountFilter || RoomsCountFilter == 0).
                 Where(t => t.Estate.BathroomCount == BathroomsCountFilter || BathroomsCountFilter == 0).
-                Where(t => t.Estate.FloorNumber == FloorNumberFilter || FloorNumberFilter == 0).ToList();
+                Where(t => t.Estate.FloorNumber == FloorNumberFilter || FloorNumberFilter == 0);
             }
 
+            switch (SortSelectedId)
+            {
+                case 0:
+                    request = request.OrderByDescending(t => t.Price);
+                    break;
 
+                case 1:
+                    request = request.OrderBy(t => t.Price);
+                    break;
+
+                case 2:
+                    request = request.OrderByDescending(t => t.PublicationDate);
+                    break;
+
+                case 3:
+                    request = request.OrderBy(t => t.PublicationDate);
+                    break;
+
+                case 4:
+                    request = request.OrderByDescending(t => t.Estate.FloorCount);
+                    break;
+
+                case 5:
+                    request = request.OrderBy(t => t.Estate.FloorCount);
+                    break;
+
+                case 6:
+                    request = request.OrderByDescending(t => t.Estate.EnergeticPerformance);
+                    break;
+
+                case 7:
+                    request = request.OrderBy(t => t.Estate.EnergeticPerformance);
+                    break;
+            }
+
+            List<Transaction> translist = request.ToList();
 
 
             foreach (var trans in translist)

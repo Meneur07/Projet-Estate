@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}" ItemsSource="{Binding Transactions}">
+        <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Style="{StaticResource ListEstates}" SelectedItem="{Binding SelectedTransaction}" ItemsSource="{Binding Transactions}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="#95A5A6">
@@ -119,8 +119,17 @@
             </Rectangle.Effect>
 
         </Rectangle>
-        <CheckBox IsChecked="{Binding ShouldApplyFilter}" Content="ACTIVATE FILTERS" Grid.Row="0" Foreground="White" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <ComboBox Grid.Row="0" Grid.Column="0" Style="{StaticResource CustomComboBox}"/>
+        <CheckBox IsChecked="{Binding ShouldApplyFilter}" Content="ACTIVATE FILTERS" Grid.Row="0" Foreground="White" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ComboBox Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource CustomComboBox}" SelectedIndex="{Binding SortSelectedId}">
+            <ComboBoxItem Content="Price Down"/>
+            <ComboBoxItem Content="Price Up"/>
+            <ComboBoxItem Content="Publication Date Down"/>
+            <ComboBoxItem Content="Publication Date Up"/>
+            <ComboBoxItem Content="Floors Count Down"/>
+            <ComboBoxItem Content="Floors Count Up"/>
+            <ComboBoxItem Content="Energetic Performance Down"/>
+            <ComboBoxItem Content="Energetic Performance Up"/>
+        </ComboBox>
 
 
 
