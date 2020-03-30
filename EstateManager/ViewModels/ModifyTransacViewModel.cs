@@ -117,13 +117,10 @@ namespace EstateManager.ViewModels
 
         void clickModify()
         {
-
             mergeTextFieldsWithObjectsToUpdate();
-
             dbContext.Estates.Update(estateToModify);
             dbContext.Transactions.Update(transactionToModify);
             dbContext.SaveChanges();
-            //TODO : Modifier dans la base de données
             Parent.Close();
         }
 
@@ -148,7 +145,6 @@ namespace EstateManager.ViewModels
                 Photo = new Photo();
                 Photo.Picture = ImageToByteArray(Image.FromFile(imagePath));
                 Photo.ShootingDate = File.GetCreationTime(imagePath);
-
             }
         }
 
