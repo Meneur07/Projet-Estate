@@ -141,12 +141,12 @@ namespace EstateManager.ViewModels
                 }
 
             };
-
+            Random rnd = new Random();
             Transaction transactionToBeAdded = new Transaction()
             {
                 Title = Title,
                 Description = Description,
-                PublicationDate = DateTime.Now,
+                PublicationDate = DateTime.Now.AddMonths(-1),
                 Type = TransacType,
                 Price = Price,
                 Fees = Fees,
