@@ -275,6 +275,7 @@
     <Compile Include="Models\MapPoint.cs" />
     <Compile Include="ViewModels\DetailsWindowViewModel.cs" />
     <Compile Include="Models\DateModel.cs" />
+    <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\ModifyTransacViewModel.cs" />
     <Compile Include="ViewModels\AddTransacViewModel.cs" />
     <Compile Include="ViewModels\AppointmentViewModel.cs" />
@@ -283,6 +284,9 @@
     <Compile Include="ViewModels\StatViewModel.cs" />
     <Compile Include="Views\DetailsWindow.xaml.cs">
       <DependentUpon>DetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ModifyTransaction.xaml.cs">
       <DependentUpon>ModifyTransaction.xaml</DependentUpon>
@@ -309,6 +313,10 @@
       <DependentUpon>testItemLayout.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\DetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

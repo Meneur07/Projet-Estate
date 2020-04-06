@@ -26,13 +26,6 @@ namespace EstateManager.Views
         {
             DataContext = new AppointmentViewModel();
             InitializeComponent();
-
-
-        }
-
-        private void Map_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            e.Handled = true;
         }
     }
 }
