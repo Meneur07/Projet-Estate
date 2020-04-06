@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Geocoding.Microsoft;
 using Microsoft.EntityFrameworkCore;
+using System.Windows;
 
 namespace EstateManager.ViewModels
 {
@@ -35,7 +36,12 @@ namespace EstateManager.ViewModels
             OcMapPoints = new ObservableCollection<MapPoint>();
             var locationList = dbContext.Transactions.Include(b => b.Estate).ToList();
             Task t = Task.Run(() => PlacePointsAsync(locationList));
-            t.Wait();
+        }
+
+        public static void AddOnUI<T>(ICollection<T> collection, T item)
+        {
+            Action<T> addMethod = collection.Add;
+            Application.Current.Dispatcher.BeginInvoke(addMethod, item);
         }
 
         async Task PlacePointsAsync(List<Transaction> list)
@@ -49,7 +55,10 @@ namespace EstateManager.ViewModels
             foreach (var item in list)
             {
                 addresses = await geocoder.GeocodeAsync(item.Estate.Address + " " + item.Estate.ZipCode + " "+ item.Estate.City);
-                OcMapPoints.Add(new MapPoint()
+
+
+
+                AddOnUI(OcMapPoints, new MapPoint()
                 {
                     Latitude = addresses.First().Coordinates.Latitude,
                     Longitude = addresses.First().Coordinates.Longitude,
@@ -57,6 +66,7 @@ namespace EstateManager.ViewModels
                     Description = item.Description
 
                 });
+
             }
 
         }

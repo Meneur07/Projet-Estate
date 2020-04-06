@@ -305,9 +305,6 @@
     <Compile Include="Views\StatPage.xaml.cs">
       <DependentUpon>StatPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\testItemLayout.xaml.cs">
-      <DependentUpon>testItemLayout.xaml</DependentUpon>
-    </Compile>
     <Page Include="Views\DetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -363,10 +360,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\StatPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\testItemLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
