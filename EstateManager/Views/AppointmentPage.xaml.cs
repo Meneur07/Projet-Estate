@@ -1,4 +1,5 @@
 ﻿using EstateManager.ViewModels;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,13 @@ namespace EstateManager.Views
         {
             DataContext = new AppointmentViewModel();
             InitializeComponent();
+
+
+        }
+
+        private void Map_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
