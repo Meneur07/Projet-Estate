@@ -91,7 +91,8 @@ namespace EstateManager.ViewModels
                 Where(t => t.Estate.FloorCount == FloorsCountFilter || FloorsCountFilter == 0).
                 Where(t => t.Estate.RoomsCount == RoomsCountFilter || RoomsCountFilter == 0).
                 Where(t => t.Estate.BathroomCount == BathroomsCountFilter || BathroomsCountFilter == 0).
-                Where(t => t.Estate.FloorNumber == FloorNumberFilter || FloorNumberFilter == 0);
+                Where(t => t.Estate.FloorNumber == FloorNumberFilter || FloorNumberFilter == 0).
+                Where(t =>  t.Estate.City.ToLower() == LocalisationFilter.ToLower() || LocalisationFilter == "");
             }
 
             switch (SortSelectedId)
