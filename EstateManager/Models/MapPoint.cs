@@ -23,6 +23,18 @@ namespace EstateManager.Models
             set { SetProperty<double>(value); }
         }
 
+
+        public String Name
+        {
+            get { return GetProperty<String>(); }
+            set { SetProperty<String>(value); }
+        }
+        public String Description
+        {
+            get { return GetProperty<String>(); }
+            set { SetProperty<String>(value); }
+        }
+
         public Location location { get { return new Location(Latitude, Longitude); } }
 
     }

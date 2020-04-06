@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Geocoding.Microsoft;
+using Microsoft.EntityFrameworkCore;
+
 namespace EstateManager.ViewModels
 {
 
@@ -31,13 +33,12 @@ namespace EstateManager.ViewModels
 
             var dbContext = DataAccess.EstateManagerContext.Current;
             OcMapPoints = new ObservableCollection<MapPoint>();
-            var locationList = dbContext.Estates.ToList();
+            var locationList = dbContext.Transactions.Include(b => b.Estate).ToList();
             Task t = Task.Run(() => PlacePointsAsync(locationList));
             t.Wait();
-            int i = 5;
         }
 
-        async Task PlacePointsAsync(List<Estate> list)
+        async Task PlacePointsAsync(List<Transaction> list)
         {
 
             IGeocoder geocoder = new BingMapsGeocoder("2nbycCL6Gzmsr7jeoLGt~i-GGspDBBqMJLETkBSB4AA~AkYmtyboWJkGoYbS734ufkxbskzYOGwHuAG79CvLt1wiYNviJBQ8EwLd2IIO9-K3");
@@ -47,11 +48,13 @@ namespace EstateManager.ViewModels
 
             foreach (var item in list)
             {
-                addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " "+ item.City);
+                addresses = await geocoder.GeocodeAsync(item.Estate.Address + " " + item.Estate.ZipCode + " "+ item.Estate.City);
                 OcMapPoints.Add(new MapPoint()
                 {
                     Latitude = addresses.First().Coordinates.Latitude,
-                    Longitude = addresses.First().Coordinates.Longitude
+                    Longitude = addresses.First().Coordinates.Longitude,
+                    Name = item.Title,
+                    Description = item.Description
 
                 });
             }

@@ -132,6 +132,25 @@
         <Style TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
+        
+        <Style x:Key="InfoBoxToolTip" TargetType="ToolTip">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border CornerRadius="5" BorderBrush="Black" BorderThickness="2" Background="#5c87b2">
+                            <ContentPresenter Margin="5">
+                                <ContentPresenter.Content>
+                                    <StackPanel Margin="5" MaxWidth="400">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Foreground="White" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding Description}" Foreground="White" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
     </Application.Resources>
 </Application>
