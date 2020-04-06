@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EstateManager.ViewModels
 {
@@ -22,8 +23,6 @@ namespace EstateManager.ViewModels
         private Person GeneratePerson()
         {
             string[] arrayNames = { "Jean", "Paule", "Pierre", "Jacqueline", "Michel", "David", "Léo", "Claudette", "Cloé", "Gertrude" };
-
-
 
             string firstName = arrayNames[r.Next(arrayNames.Length)];
             string lastName = arrayNames[r.Next(arrayNames.Length)];
@@ -118,13 +117,33 @@ namespace EstateManager.ViewModels
 
         void clickAdd()
         {
-            Photo.Person = Commercial;
+            Estate res = dbContext.Estates.Find(Reference);
+            if (res != null || Reference == 0)
+            {
+                MessageBox.Show("Cette référence est déjà attribuée !");
+                return;
+            }
+            if (Commercial == null || Owner == null || Client == null)
+            {
+                MessageBox.Show("Il faut remplir au minimum toutes les combosBox !");
+                return;
+            }
+
+            try
+            {
+                Photo.Person = Commercial;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Il faut au moins mettre une photo !");
+                return;
+            }
 
             Estate estateToBeAdded = new Estate()
             {
                 Reference = Reference,
                 FloorCount = FloorCount,
-                RoomsCount=RoomsCount,
+                RoomsCount = RoomsCount,
                 BathroomCount = BathroomCount,
                 Surface = Surface,
                 Address = Address,
@@ -139,9 +158,8 @@ namespace EstateManager.ViewModels
                 {
                     Photo
                 }
-
             };
-            Random rnd = new Random();
+
             Transaction transactionToBeAdded = new Transaction()
             {
                 Title = Title,
@@ -157,9 +175,10 @@ namespace EstateManager.ViewModels
             };
 
 
-            dbContext.Add(estateToBeAdded);
-            dbContext.Add(transactionToBeAdded);
+            dbContext.Estates.Add(estateToBeAdded);
+            dbContext.Transactions.Add(transactionToBeAdded);
             dbContext.SaveChanges();
+
             Parent.Close();
         }
 
