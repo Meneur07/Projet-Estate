@@ -83,5 +83,21 @@ namespace EstateManager.ViewModels
                 ActualPage = new AppointmentPage();
             }
         }
+
+        public ICommand MapCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMap);
+            }
+        }
+
+        void clickMap()
+        {
+            if (ActualPage?.GetType() != typeof(MapPage))
+            {
+                ActualPage = new MapPage();
+            }
+        }
     }
 }

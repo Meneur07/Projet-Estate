@@ -1,0 +1,29 @@
+﻿<Page x:Class="EstateManager.Views.MapPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EstateManager.Views"
+      xmlns:WPF="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MapPage" Background="White">
+
+    <Grid>
+        <WPF:Map CredentialsProvider="2nbycCL6Gzmsr7jeoLGt~i-GGspDBBqMJLETkBSB4AA~AkYmtyboWJkGoYbS734ufkxbskzYOGwHuAG79CvLt1wiYNviJBQ8EwLd2IIO9-K3" Mode="Road" ZoomLevel="4.00" MouseDown="Map_MouseDown"  >
+            <WPF:MapItemsControl ItemsSource="{Binding OcMapPoints}">
+                <WPF:MapItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <WPF:Pushpin Background="Red" Location="{Binding location}">
+
+                            <ToolTipService.ToolTip>
+                                <ToolTip Style="{StaticResource InfoBoxToolTip}"/>
+                            </ToolTipService.ToolTip>
+                        </WPF:Pushpin>
+                    </DataTemplate>
+                </WPF:MapItemsControl.ItemTemplate>
+            </WPF:MapItemsControl>
+
+        </WPF:Map>
+    </Grid>
+</Page>
