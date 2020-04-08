@@ -26,6 +26,19 @@ namespace EstateManager.Models
         }
 
 
+        public TypeUser Type
+        {
+            get { return GetProperty<TypeUser>(); }
+            set { SetProperty<TypeUser>(value); }
+        }
+
+
+        public String Username
+        {
+            get { return GetProperty<String>(); }
+            set { SetProperty<String>(value); }
+        }
+
 
 
         public int PersonId
@@ -36,6 +49,7 @@ namespace EstateManager.Models
                 SetProperty(value);
             }
         }
+
 
 
         [ForeignKey(nameof(PersonId))]

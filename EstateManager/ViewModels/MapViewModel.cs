@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EstateManager.ViewModels
 {
@@ -36,20 +37,27 @@ namespace EstateManager.ViewModels
 
             IGeocoder geocoder = new BingMapsGeocoder("2nbycCL6Gzmsr7jeoLGt~i-GGspDBBqMJLETkBSB4AA~AkYmtyboWJkGoYbS734ufkxbskzYOGwHuAG79CvLt1wiYNviJBQ8EwLd2IIO9-K3");
             IEnumerable<Address> addresses = null;
-            //Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
-            //Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437
 
             foreach (var item in list)
             {
-                addresses = await geocoder.GeocodeAsync(item.Estate.Address + " " + item.Estate.ZipCode + " " + item.Estate.City);
-                OcMapPoints.Add(new MapPoint()
+                try
                 {
-                    Latitude = addresses.First().Coordinates.Latitude,
-                    Longitude = addresses.First().Coordinates.Longitude,
-                    Name = item.Title,
-                    Description = item.Description
+                    addresses = await geocoder.GeocodeAsync(item.Estate.Address + " " + item.Estate.ZipCode + " " + item.Estate.City);
+                    OcMapPoints.Add(new MapPoint()
+                    {
+                        Latitude = addresses.First().Coordinates.Latitude,
+                        Longitude = addresses.First().Coordinates.Longitude,
+                        Name = item.Title,
+                        Description = item.Description
 
-                });
+                    });
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Addresse not found");
+                }
+
             }
 
         }

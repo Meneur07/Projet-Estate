@@ -5,7 +5,7 @@
              xmlns:nsEnums="clr-namespace:EstateManager.Models"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:nsConverters="clr-namespace:EstateManager.Converters"
-             StartupUri="Views/MainWindow.xaml">
+             StartupUri="Views/LoginWindow.xaml">
     <Application.Resources>
 
         <nsConverters:ByteArryaToBitmapImageConverter x:Key="ByteArrayToImage"/>
