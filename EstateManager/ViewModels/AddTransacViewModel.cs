@@ -66,6 +66,7 @@ namespace EstateManager.ViewModels
                 Person toAdd = GeneratePerson();
                 dbContext.Add(toAdd);
             }
+            MessageBox.Show("J'ai généré 10 personnes aléatoirement !");
             dbContext.SaveChanges();
         }
 

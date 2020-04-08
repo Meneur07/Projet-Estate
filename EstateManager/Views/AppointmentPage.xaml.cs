@@ -27,5 +27,12 @@ namespace EstateManager.Views
             DataContext = new AppointmentViewModel();
             InitializeComponent();
         }
+
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AppointmentViewModel vm = (AppointmentViewModel)DataContext;
+            Calendar c = (Calendar)sender;
+            vm.loadAppointments(c.SelectedDate);
+        }
     }
 }

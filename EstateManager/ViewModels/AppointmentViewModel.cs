@@ -10,65 +10,76 @@ using System.Threading.Tasks;
 using Geocoding.Microsoft;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
+using System.Windows.Input;
+using EstateManager.DataAccess;
 
 namespace EstateManager.ViewModels
 {
 
-    
 
-    class AppointmentViewModel : BaseNotifyPropertyChanged
+
+    class AppointmentViewModel
     {
 
-
-
-        public ObservableCollection<MapPoint> OcMapPoints
-        {
-            get { return GetProperty<ObservableCollection<MapPoint>>(); }
-            set { SetProperty<ObservableCollection<MapPoint>>(value); }
-        }
-
+        public ObservableCollection<Appointment> Appointments { get; set; }
+        private EstateManagerContext dbContext { get; set; }
 
         public AppointmentViewModel()
         {
-            
-
-            var dbContext = DataAccess.EstateManagerContext.Current;
-            OcMapPoints = new ObservableCollection<MapPoint>();
-            var locationList = dbContext.Transactions.Include(b => b.Estate).ToList();
-            Task t = Task.Run(() => PlacePointsAsync(locationList));
+            dbContext = EstateManagerContext.Current;
+            Appointments = new ObservableCollection<Appointment>();
+            if (dbContext.Appointments.Count() == 0)
+                initAppointments();
+            loadAppointments(DateTime.Now);
         }
 
-        public static void AddOnUI<T>(ICollection<T> collection, T item)
+        public void loadAppointments(DateTime? date)
         {
-            Action<T> addMethod = collection.Add;
-            Application.Current.Dispatcher.BeginInvoke(addMethod, item);
-        }
-
-        async Task PlacePointsAsync(List<Transaction> list)
-        {
-
-            IGeocoder geocoder = new BingMapsGeocoder("2nbycCL6Gzmsr7jeoLGt~i-GGspDBBqMJLETkBSB4AA~AkYmtyboWJkGoYbS734ufkxbskzYOGwHuAG79CvLt1wiYNviJBQ8EwLd2IIO9-K3");
-            IEnumerable<Address> addresses = null;
-            //Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
-            //Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437
-
-            foreach (var item in list)
+            if (date == null)
             {
-                addresses = await geocoder.GeocodeAsync(item.Estate.Address + " " + item.Estate.ZipCode + " "+ item.Estate.City);
-
-
-
-                AddOnUI(OcMapPoints, new MapPoint()
-                {
-                    Latitude = addresses.First().Coordinates.Latitude,
-                    Longitude = addresses.First().Coordinates.Longitude,
-                    Name = item.Title,
-                    Description = item.Description
-
-                });
-
+                return;
             }
-
+            DateTime temp = (DateTime)date;
+            Appointments.Clear();
+            List<Appointment> result = dbContext.Appointments.Where(a => a.Date.Day == temp.Day).ToList();
+            foreach (Appointment a in result)
+            {
+                Appointments.Add(a);
+            }
         }
+
+        private void initAppointments()
+        {
+            MessageBox.Show("J'init aléatoirement des RDV !");
+            Random rnd = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                DateTime temp = DateTime.Now.AddDays(rnd.Next(-5, 5));
+                dbContext.Appointments.Add(new Appointment
+                {
+                    Date = temp,
+                    Reason = "Ma date est le " + temp,
+                    Person1Id = rnd.Next(1, 10),
+                    Person2Id = rnd.Next(1, 10)
+                }); ;
+            }
+            dbContext.SaveChanges();
+        }
+
+        /*public ICommand clickDayCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand<DateTime>(clickDay);
+            }
+        }
+
+        void clickDay(DateTime date)
+        {
+            loadAppointments(date);
+        }*/
+
+
+
     }
 }

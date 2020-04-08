@@ -9,8 +9,39 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AppointmentPage" Background="White">
 
-    <Grid>
+    <Grid Focusable="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Row="0" Grid.Column="0" Focusable="False">
+            <Calendar Grid.Row="0" Grid.Column="0" SelectedDatesChanged="Calendar_SelectedDatesChanged" BorderThickness="0" Focusable="False"/>
+        </Viewbox>
 
-        <TextBlock Text="Appointments"/>
+        <ListBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Appointments}" BorderThickness="10,0,0,0" BorderBrush="Black">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontWeight="ExtraBold" Text="{Binding Reason}"/>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Hour : {0}:{1}">
+                                    <Binding Path="Date.Hour"/>
+                                    <Binding Path="Date.Minute"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Concerned persons : {0} and {1}">
+                                    <Binding Path="Person1.FirstName"/>
+                                    <Binding Path="Person2.FirstName"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

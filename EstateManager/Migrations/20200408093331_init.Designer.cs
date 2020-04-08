@@ -9,14 +9,50 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-    [Migration("20200408062910_app")]
-    partial class app
+    [Migration("20200408093331_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
+
+            modelBuilder.Entity("EstateManager.Models.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("City")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Person1Id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Person2Id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Person1Id");
+
+                    b.HasIndex("Person2Id");
+
+                    b.ToTable("Appointments");
+                });
 
             modelBuilder.Entity("EstateManager.Models.Estate", b =>
                 {
@@ -219,6 +255,21 @@ namespace EstateManager.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EstateManager.Models.Appointment", b =>
+                {
+                    b.HasOne("EstateManager.Models.Person", "Person1")
+                        .WithMany()
+                        .HasForeignKey("Person1Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EstateManager.Models.Person", "Person2")
+                        .WithMany()
+                        .HasForeignKey("Person2Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EstateManager.Models.Estate", b =>
