@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-    [Migration("20200325132314_init")]
+    [Migration("20200408062817_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -2,7 +2,7 @@
 
 namespace EstateManager.Migrations
 {
-    public partial class RoomsCount : Migration
+    public partial class app : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
