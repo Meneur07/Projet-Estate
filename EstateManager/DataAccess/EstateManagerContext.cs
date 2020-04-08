@@ -32,6 +32,7 @@ namespace EstateManager.DataAccess
         public DbSet<Models.Tag> Tags { get; set; }
         public DbSet<Models.Person> Persons { get; set; }
         public DbSet<Models.User> Users { get; set; }
+        public DbSet<Models.Appointment> Appointments { get; set; }
 
         public async static Task InitializeAsync()
         {
