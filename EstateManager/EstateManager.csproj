@@ -263,6 +263,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\ByteArrayToBitmapImageConverter.cs" />
+    <Compile Include="DataAccess\ConnectionContext.cs" />
     <Compile Include="Migrations\20200408062817_init.cs" />
     <Compile Include="Migrations\20200408062817_init.designer.cs">
       <DependentUpon>20200408062817_init.cs</DependentUpon>
@@ -271,11 +272,24 @@
     <Compile Include="Migrations\20200408062910_app.designer.cs">
       <DependentUpon>20200408062910_app.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200408063226_appoint.cs" />
+    <Compile Include="Migrations\20200408063226_appoint.designer.cs">
+      <DependentUpon>20200408063226_appoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200408074039_Typ.cs" />
+    <Compile Include="Migrations\20200408074039_Typ.designer.cs">
+      <DependentUpon>20200408074039_Typ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200408093219_log.cs" />
+    <Compile Include="Migrations\20200408093219_log.designer.cs">
+      <DependentUpon>20200408093219_log.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\MapPoint.cs" />
     <Compile Include="ViewModels\DetailsWindowViewModel.cs" />
     <Compile Include="Models\DateModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\ModifyTransacViewModel.cs" />
     <Compile Include="ViewModels\AddTransacViewModel.cs" />
@@ -285,6 +299,9 @@
     <Compile Include="ViewModels\StatViewModel.cs" />
     <Compile Include="Views\DetailsWindow.xaml.cs">
       <DependentUpon>DetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
@@ -311,6 +328,10 @@
       <DependentUpon>StatPage.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\DetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

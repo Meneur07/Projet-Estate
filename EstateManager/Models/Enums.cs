@@ -21,5 +21,11 @@ namespace EstateManager.Models
         Rent
     }
 
-
+    public enum TypeUser
+    {
+        Admin,
+        Commercial,
+        Secretary,
+        Client
+    }
 }

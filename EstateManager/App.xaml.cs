@@ -25,7 +25,8 @@ namespace EstateManager
             base.OnStartup(e);
             await EstateManagerContext.InitializeAsync();
 
-            //createSampleData();
+
+            //CreateSampleData();
 
 
 
@@ -38,6 +39,7 @@ namespace EstateManager
         //private void CreateSampleData()
         //{
         //    var pubDate = new DateTime();
+        //    Random r = new Random();
         //    pubDate = DateTime.Now;
         //    if (r.Next(0, 3) == 0)
         //    {
