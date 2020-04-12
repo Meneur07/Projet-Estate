@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace EstateManager.ViewModels
 {
-
-
-
     class LoginViewModel : BaseNotifyPropertyChanged
     {
 
@@ -43,21 +37,19 @@ namespace EstateManager.ViewModels
                 return;
 
             var dbContext = DataAccess.EstateManagerContext.Current;
-            
-
             try
             {
 
                 var loggedUser = dbContext.Users.Where(t => t.Username == Username && t.Password == pbox.Password).First();
                 DataAccess.ConnectionContext.ConnectedUser = loggedUser;
 
- MessageBox.Show("Bien connecté " + Username +" !");
+                MessageBox.Show("Bonjour " + Username + " !");
                 new Views.MainWindow().Show();
                 LoginWindow.Close();
             }
             catch (Exception)
             {
-                MessageBox.Show("Erreur de connexion !");
+                MessageBox.Show("Mot de passe ou pseudo incorrect !");
             }
         }
 

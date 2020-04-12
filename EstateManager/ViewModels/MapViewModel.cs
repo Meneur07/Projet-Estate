@@ -6,10 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace EstateManager.ViewModels
 {
@@ -21,7 +19,6 @@ namespace EstateManager.ViewModels
             set { SetProperty<ObservableCollection<MapPoint>>(value); }
         }
 
-
         public MapViewModel()
         {
             var dbContext = DataAccess.EstateManagerContext.Current;
@@ -30,7 +27,6 @@ namespace EstateManager.ViewModels
             var locationAppList = dbContext.Appointments.ToList();
             var locationClientsList = dbContext.Persons.ToList();
             Task t = Task.Run(() => PlacePointsAsync(locationTransacList, locationAppList, locationClientsList));
-
         }
 
         async Task PlacePointsAsync(List<Transaction> listTransac, List<Appointment> listAppoint, List<Person> listClients)
@@ -55,12 +51,9 @@ namespace EstateManager.ViewModels
 
                         });
                     });
-
                 }
                 catch (Exception)
                 {
-
-                    //MessageBox.Show("Addresse not found");
                 }
 
             }
@@ -83,8 +76,6 @@ namespace EstateManager.ViewModels
                 }
                 catch (Exception)
                 {
-
-                    //MessageBox.Show("Addresse not found");
                 }
 
             }
@@ -101,16 +92,12 @@ namespace EstateManager.ViewModels
                             Longitude = addresses.First().Coordinates.Longitude,
                             Name = item.FirstName + " " + item.LastName,
                             Description = item.Mail
-
                         });
                     });
                 }
                 catch (Exception)
                 {
-
-                    //MessageBox.Show("Addresse not found");
                 }
-
             }
         }
     }

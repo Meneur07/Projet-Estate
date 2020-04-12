@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using LiveCharts;
 using LiveCharts.Configurations;
 using LiveCharts.Wpf;
@@ -19,7 +16,6 @@ namespace EstateManager.ViewModels
             get { return GetProperty<SeriesCollection>(); }
             set { SetProperty<SeriesCollection>(value); }
         }
-
 
         public String StatNbTrans
         {
@@ -65,9 +61,6 @@ namespace EstateManager.ViewModels
             StatNbTransMonth = "ESTATES LAST MONTH : " + nbPostsLastMonth;
             int nbPostsLastYear = dbContext.Transactions.Where(t => t.PublicationDate < DateTime.Now.AddYears(-1) && t.PublicationDate > DateTime.Now.AddYears(-2)).Count();
             StatNbTransYear = "ESTATES LAST YEAR : " + nbPostsLastYear;
-
-
-
         }
 
         public Func<double, string> Formatter { get; set; }

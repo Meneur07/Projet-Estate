@@ -1,16 +1,8 @@
 ﻿using EstateManager.Models;
-using Geocoding;
-using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Geocoding.Microsoft;
-using Microsoft.EntityFrameworkCore;
-using System.Windows;
-using System.Windows.Input;
 using EstateManager.DataAccess;
 
 namespace EstateManager.ViewModels
@@ -42,21 +34,5 @@ namespace EstateManager.ViewModels
                 Appointments.Add(a);
             }
         }
-
-        /*public ICommand clickDayCommand
-        {
-            get
-            {
-                return new Commands.DelegateCommand<DateTime>(clickDay);
-            }
-        }
-
-        void clickDay(DateTime date)
-        {
-            loadAppointments(date);
-        }*/
-
-
-
     }
 }

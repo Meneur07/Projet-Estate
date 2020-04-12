@@ -1,7 +1,6 @@
 ﻿using EstateManager.DataAccess;
 using EstateManager.Models;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -69,7 +68,6 @@ namespace EstateManager.ViewModels
 
             updateContent();
         }
-
 
         void updateContent()
         {

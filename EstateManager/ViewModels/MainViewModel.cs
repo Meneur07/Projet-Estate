@@ -1,10 +1,4 @@
 ﻿using EstateManager.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -18,7 +12,6 @@ namespace EstateManager.ViewModels
             get { return GetProperty<Page>(); }
             set { SetProperty<Page>(value); }
         }
-
 
         public ICommand StatCommand
         {

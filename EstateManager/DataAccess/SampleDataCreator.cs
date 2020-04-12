@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EstateManager.DataAccess
 {
@@ -11,7 +13,7 @@ namespace EstateManager.DataAccess
     {
         private static EstateManagerContext dbContext = EstateManagerContext.Current;
 
-        public static void createSampleDate()
+        public async static Task createSampleDataAsync()
         {
             if (dbContext.Persons.Count() == 0)
             {
