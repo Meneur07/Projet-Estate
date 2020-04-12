@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace EstateManager.ViewModels
 {
@@ -29,7 +30,7 @@ namespace EstateManager.ViewModels
             var locationAppList = dbContext.Appointments.ToList();
             var locationClientsList = dbContext.Persons.ToList();
             Task t = Task.Run(() => PlacePointsAsync(locationTransacList, locationAppList, locationClientsList));
-            t.Wait();
+
         }
 
         async Task PlacePointsAsync(List<Transaction> listTransac, List<Appointment> listAppoint, List<Person> listClients)
@@ -43,19 +44,23 @@ namespace EstateManager.ViewModels
                 try
                 {
                     addresses = await geocoder.GeocodeAsync(item.Estate.Address + " " + item.Estate.ZipCode + " " + item.Estate.City);
-                    OcMapPoints.Add(new MapPoint()
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
-                        Latitude = addresses.First().Coordinates.Latitude,
-                        Longitude = addresses.First().Coordinates.Longitude,
-                        Name = item.Title,
-                        Description = item.Description
+                        OcMapPoints.Add(new MapPoint()
+                        {
+                            Latitude = addresses.First().Coordinates.Latitude,
+                            Longitude = addresses.First().Coordinates.Longitude,
+                            Name = item.Title,
+                            Description = item.Description
 
+                        });
                     });
+
                 }
                 catch (Exception)
                 {
 
-                    MessageBox.Show("Addresse not found");
+                    //MessageBox.Show("Addresse not found");
                 }
 
             }
@@ -64,19 +69,22 @@ namespace EstateManager.ViewModels
                 try
                 {
                     addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " " + item.City);
-                    OcMapPoints.Add(new MapPoint()
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
-                        Latitude = addresses.First().Coordinates.Latitude,
-                        Longitude = addresses.First().Coordinates.Longitude,
-                        Name = item.Reason,
-                        Description = item.Person1.FirstName + " avec " + item.Person2.FirstName
+                            OcMapPoints.Add(new MapPoint()
+                        {
+                            Latitude = addresses.First().Coordinates.Latitude,
+                            Longitude = addresses.First().Coordinates.Longitude,
+                            Name = item.Reason,
+                            Description = item.Person1.FirstName + " avec " + item.Person2.FirstName
 
+                        });
                     });
                 }
                 catch (Exception)
                 {
 
-                    MessageBox.Show("Addresse not found");
+                    //MessageBox.Show("Addresse not found");
                 }
 
             }
@@ -85,19 +93,22 @@ namespace EstateManager.ViewModels
                 try
                 {
                     addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " " + item.City);
-                    OcMapPoints.Add(new MapPoint()
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
-                        Latitude = addresses.First().Coordinates.Latitude,
-                        Longitude = addresses.First().Coordinates.Longitude,
-                        Name = item.FirstName + " " + item.LastName,
-                        Description = item.Mail
+                        OcMapPoints.Add(new MapPoint()
+                        {
+                            Latitude = addresses.First().Coordinates.Latitude,
+                            Longitude = addresses.First().Coordinates.Longitude,
+                            Name = item.FirstName + " " + item.LastName,
+                            Description = item.Mail
 
+                        });
                     });
                 }
                 catch (Exception)
                 {
 
-                    MessageBox.Show("Addresse not found");
+                    //MessageBox.Show("Addresse not found");
                 }
 
             }

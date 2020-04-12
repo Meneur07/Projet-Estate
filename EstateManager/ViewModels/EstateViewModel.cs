@@ -125,7 +125,14 @@ namespace EstateManager.ViewModels
                     break;
             }
 
-            List<Transaction> translist = request.ToList();
+            List<Transaction> translist = new List<Transaction>();
+            try
+            {
+                translist = request.ToList();
+            }
+            catch (Exception)
+            {
+            }
 
 
             foreach (var trans in translist)
