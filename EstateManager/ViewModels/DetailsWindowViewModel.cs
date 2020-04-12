@@ -1,11 +1,15 @@
 ﻿using EstateManager.DataAccess;
 using EstateManager.Models;
+using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace EstateManager.ViewModels
 {
     class DetailsWindowViewModel
     {
         private EstateManagerContext dbContext = EstateManagerContext.Current;
+        private Window Parent;
 
         private int idTransaction;
         public string Title { get; set; }
@@ -28,8 +32,9 @@ namespace EstateManager.ViewModels
         public string PubDate { get; set; }
         public Photo MainPhoto { get; set; }
 
-        public DetailsWindowViewModel(int id)
+        public DetailsWindowViewModel(int id, Window parent)
         {
+            Parent = parent;
             idTransaction = id;
             loadFields(idTransaction);
         }
@@ -58,6 +63,56 @@ namespace EstateManager.ViewModels
             Price = t.Price;
             Fees = t.Fees;
             PubDate = t.PublicationDate.ToString();
+        }
+
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickClose);
+            }
+        }
+
+        public void clickClose()
+        {
+            Parent.Close();
+        }
+
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMinimize);
+            }
+        }
+
+        public void clickMinimize()
+        {
+            Parent.WindowState = WindowState.Minimized;
+        }
+
+        public ICommand MaximizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMaximize);
+            }
+        }
+
+        public void clickMaximize()
+        {
+            if (Parent.Width == Screen.PrimaryScreen.WorkingArea.Width && Parent.Height == Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                Parent.Width = 800;
+                Parent.Height = 500;
+            }
+            else
+            {
+                Parent.Left = Parent.Top = 0;
+                Parent.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Parent.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            }
         }
     }
 }

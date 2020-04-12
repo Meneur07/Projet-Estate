@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace EstateManager.ViewModels
 {
@@ -210,6 +211,57 @@ namespace EstateManager.ViewModels
             transactionToModify.Owner = Owner;
             transactionToModify.Client = Client;
 
+        }
+
+
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickClose);
+            }
+        }
+
+        public void clickClose()
+        {
+            Parent.Close();
+        }
+
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMinimize);
+            }
+        }
+
+        public void clickMinimize()
+        {
+            Parent.WindowState = WindowState.Minimized;
+        }
+
+        public ICommand MaximizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMaximize);
+            }
+        }
+
+        public void clickMaximize()
+        {
+            if (Parent.Width == Screen.PrimaryScreen.WorkingArea.Width && Parent.Height == Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                Parent.Width = 800;
+                Parent.Height = 500;
+            }
+            else
+            {
+                Parent.Left = Parent.Top = 0;
+                Parent.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Parent.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            }
         }
     }
 }

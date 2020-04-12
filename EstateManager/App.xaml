@@ -58,7 +58,7 @@
         <Style x:Key="ListEstates" TargetType="ListBox">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            
+
             <Setter Property="ItemContainerStyle" Value="{StaticResource CustomListBoxItem}"/>
         </Style>
 
@@ -132,7 +132,7 @@
         <Style TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
-        
+
         <Style x:Key="InfoBoxToolTip" TargetType="ToolTip">
             <Setter Property="Template">
                 <Setter.Value>

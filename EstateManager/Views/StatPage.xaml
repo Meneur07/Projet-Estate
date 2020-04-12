@@ -10,7 +10,7 @@
       Title="StatPage" Background="White"
       >
 
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
@@ -27,6 +27,6 @@
             <TextBlock Text="{Binding StatNbTransMonth}"/>
             <TextBlock  Text="{Binding StatNbTransYear}"/>
         </StackPanel>
-        
+
     </Grid>
 </Page>

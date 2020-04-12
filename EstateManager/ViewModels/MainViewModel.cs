@@ -1,11 +1,19 @@
 ﻿using EstateManager.Views;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace EstateManager.ViewModels
 {
     class MainViewModel : BaseNotifyPropertyChanged
     {
+        private Window Parent;
+
+        public MainViewModel(Window parent)
+        {
+            Parent = parent;
+        }
 
         public Page ActualPage
         {
@@ -90,6 +98,55 @@ namespace EstateManager.ViewModels
             if (ActualPage?.GetType() != typeof(MapPage))
             {
                 ActualPage = new MapPage();
+            }
+        }
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickClose);
+            }
+        }
+
+        public void clickClose()
+        {
+            Parent.Close();
+        }
+
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMinimize);
+            }
+        }
+
+        public void clickMinimize()
+        {
+            Parent.WindowState = WindowState.Minimized;
+        }
+
+        public ICommand MaximizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMaximize);
+            }
+        }
+
+        public void clickMaximize()
+        {
+            if (Parent.Width == Screen.PrimaryScreen.WorkingArea.Width && Parent.Height == Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                Parent.Width = 800;
+                Parent.Height = 500;
+            }
+            else
+            {
+                Parent.Left = Parent.Top = 0;
+                Parent.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Parent.Height = Screen.PrimaryScreen.WorkingArea.Height;
             }
         }
     }

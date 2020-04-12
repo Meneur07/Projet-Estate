@@ -75,7 +75,7 @@ namespace EstateManager.DataAccess
                 dbContext.Appointments.Add(new Appointment
                 {
                     Date = temp,
-                    Reason = "Motif : ma date est le " + temp,
+                    Reason = "Reason : ma date est le " + temp,
                     Person1Id = rnd.Next(1, 10),
                     Person2Id = rnd.Next(1, 10)
                 }); ;

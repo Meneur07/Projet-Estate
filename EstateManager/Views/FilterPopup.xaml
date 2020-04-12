@@ -30,7 +30,7 @@
 
         <Rectangle Grid.Row="0" Grid.ColumnSpan="6"  Fill="#95A5A6"/>
         <Grid Grid.Row="0" Grid.Column="5" HorizontalAlignment="Right" Margin="0,0,10,0">
-            <Button Margin="46,0,0,0" Style="{StaticResource WindowButtons}" Click="Maximize">
+            <Button Margin="46,0,0,0" Style="{StaticResource WindowButtons}" Command="{Binding MaximizeCommand}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#E67E22" Offset="0.0" />
@@ -44,7 +44,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Margin="92,0,0,0" Style="{StaticResource WindowButtons}" Click="Close">
+            <Button Margin="92,0,0,0" Style="{StaticResource WindowButtons}" Command="{Binding CloseCommand}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#E74C3C" Offset="0.0" />
@@ -59,7 +59,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button Style="{StaticResource WindowButtons}" Click="Minimize">
+            <Button Style="{StaticResource WindowButtons}" Command="{Binding MinimizeCommand}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#F1C40F" Offset="0.0" />
@@ -113,7 +113,7 @@
         <TextBox Text="{Binding FloorNumberFilter, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" Background="#BDC3C7" VerticalAlignment="Center"/>
 
 
-        <Button Content="CANCEL" Grid.Row="5" Grid.Column="4" Style="{StaticResource CustomButton}" Click="Close" Background="#C0392B" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
+        <Button Content="CANCEL" Grid.Row="5" Grid.Column="4" Style="{StaticResource CustomButton}" Command="{Binding CloseCommand}" Background="#C0392B" Foreground="White" Template="{DynamicResource SpecialButtonTemplate}" />
         <Button Content="APPLY" Grid.Row="5" Grid.Column="5" Style="{StaticResource CustomButton}" Background="#27AE60" Foreground="White" Command="{Binding ApplyFilterCommand}" Template="{DynamicResource SpecialButtonTemplate}" />
 
 

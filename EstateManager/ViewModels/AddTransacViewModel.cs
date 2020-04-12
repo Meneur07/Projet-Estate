@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace EstateManager.ViewModels
 {
@@ -17,7 +18,7 @@ namespace EstateManager.ViewModels
         private Window Parent;
 
         public static ObservableCollection<Person> People { get; set; }
-        
+
         public AddTransacViewModel(Window parent)
         {
             Parent = parent;
@@ -75,12 +76,12 @@ namespace EstateManager.ViewModels
             Estate res = dbContext.Estates.Find(Reference);
             if (res != null || Reference == 0)
             {
-                MessageBox.Show("Cette référence est déjà attribuée !");
+                System.Windows.MessageBox.Show("Cette référence est déjà attribuée !");
                 return;
             }
             if (Commercial == null || Owner == null || Client == null)
             {
-                MessageBox.Show("Il faut remplir au minimum toutes les combosBox !");
+                System.Windows.MessageBox.Show("Il faut remplir au minimum toutes les combosBox !");
                 return;
             }
 
@@ -90,7 +91,7 @@ namespace EstateManager.ViewModels
             }
             catch (Exception e)
             {
-                MessageBox.Show("Il faut au moins mettre une photo !");
+                System.Windows.MessageBox.Show("Il faut au moins mettre une photo !");
                 return;
             }
 
@@ -168,6 +169,55 @@ namespace EstateManager.ViewModels
             {
                 imageIn.Save(ms, imageIn.RawFormat);
                 return ms.ToArray();
+            }
+        }
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickClose);
+            }
+        }
+
+        public void clickClose()
+        {
+            Parent.Close();
+        }
+
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMinimize);
+            }
+        }
+
+        public void clickMinimize()
+        {
+            Parent.WindowState = WindowState.Minimized;
+        }
+
+        public ICommand MaximizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMaximize);
+            }
+        }
+
+        public void clickMaximize()
+        {
+            if (Parent.Width == Screen.PrimaryScreen.WorkingArea.Width && Parent.Height == Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                Parent.Width = 800;
+                Parent.Height = 500;
+            }
+            else
+            {
+                Parent.Left = Parent.Top = 0;
+                Parent.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                Parent.Height = Screen.PrimaryScreen.WorkingArea.Height;
             }
         }
     }

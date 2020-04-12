@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace EstateManager.ViewModels
@@ -43,13 +44,13 @@ namespace EstateManager.ViewModels
                 var loggedUser = dbContext.Users.Where(t => t.Username == Username && t.Password == pbox.Password).First();
                 DataAccess.ConnectionContext.ConnectedUser = loggedUser;
 
-                MessageBox.Show("Bonjour " + Username + " !");
+                System.Windows.MessageBox.Show("Bonjour " + Username + " !");
                 new Views.MainWindow().Show();
                 LoginWindow.Close();
             }
             catch (Exception)
             {
-                MessageBox.Show("Mot de passe ou pseudo incorrect !");
+                System.Windows.MessageBox.Show("Mot de passe ou pseudo incorrect !");
             }
         }
 
@@ -65,6 +66,55 @@ namespace EstateManager.ViewModels
         void clickCancel()
         {
             LoginWindow.Close();
+        }
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickClose);
+            }
+        }
+
+        public void clickClose()
+        {
+            LoginWindow.Close();
+        }
+
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMinimize);
+            }
+        }
+
+        public void clickMinimize()
+        {
+            LoginWindow.WindowState = WindowState.Minimized;
+        }
+
+        public ICommand MaximizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMaximize);
+            }
+        }
+
+        public void clickMaximize()
+        {
+            if (LoginWindow.Width == Screen.PrimaryScreen.WorkingArea.Width && LoginWindow.Height == Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                LoginWindow.Width = 800;
+                LoginWindow.Height = 500;
+            }
+            else
+            {
+                LoginWindow.Left = LoginWindow.Top = 0;
+                LoginWindow.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                LoginWindow.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            }
         }
     }
 }

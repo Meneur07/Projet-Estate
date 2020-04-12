@@ -64,7 +64,7 @@ namespace EstateManager.ViewModels
                     addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " " + item.City);
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                            OcMapPoints.Add(new MapPoint()
+                        OcMapPoints.Add(new MapPoint()
                         {
                             Latitude = addresses.First().Coordinates.Latitude,
                             Longitude = addresses.First().Coordinates.Longitude,

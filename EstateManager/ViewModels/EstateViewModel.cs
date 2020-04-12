@@ -8,11 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System;
 using EstateManager.Views;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace EstateManager.ViewModels
 {
     class EstateViewModel : BaseNotifyPropertyChanged
     {
+
         public TypeEstate EstateTypeFilter { get; set; }
         public TypeTransaction TransactionTypeFilter { get; set; }
         public string LocalisationFilter { get; set; }
@@ -38,7 +41,9 @@ namespace EstateManager.ViewModels
         public int SortSelectedId
         {
             get { return GetProperty<int>(); }
-            set { SetProperty<int>(value);
+            set
+            {
+                SetProperty<int>(value);
                 updateContent();
             }
         }
@@ -46,10 +51,11 @@ namespace EstateManager.ViewModels
         public bool ShouldApplyFilter
         {
             get { return GetProperty<bool>(); }
-            set {
+            set
+            {
                 SetProperty<bool>(value);
-                    updateContent();
-                }
+                updateContent();
+            }
         }
 
         public ObservableCollection<Transaction> Transactions
@@ -71,10 +77,10 @@ namespace EstateManager.ViewModels
 
         void updateContent()
         {
-            
+
             Transactions.Clear();
             IQueryable<Transaction> request = dbContext.Transactions.Include(b => b.Estate).ThenInclude(est => est.Photos);
-            
+
             if (ShouldApplyFilter)
             {
 
@@ -85,7 +91,7 @@ namespace EstateManager.ViewModels
                 Where(t => t.Estate.RoomsCount == RoomsCountFilter || RoomsCountFilter == 0).
                 Where(t => t.Estate.BathroomCount == BathroomsCountFilter || BathroomsCountFilter == 0).
                 Where(t => t.Estate.FloorNumber == FloorNumberFilter || FloorNumberFilter == 0).
-                Where(t =>  t.Estate.City.ToLower() == LocalisationFilter.ToLower() || LocalisationFilter == "");
+                Where(t => t.Estate.City.ToLower() == LocalisationFilter.ToLower() || LocalisationFilter == "");
             }
 
             switch (SortSelectedId)
@@ -177,15 +183,64 @@ namespace EstateManager.ViewModels
             }
         }
 
-        Views.FilterPopup windowFilter;
+        FilterPopup windowFilter;
         void ClickFilter()
         {
-            windowFilter = new Views.FilterPopup
+            windowFilter = new FilterPopup
             {
                 DataContext = this
             };
             windowFilter.ShowDialog();
             updateContent();
+        }
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickClose);
+            }
+        }
+
+        public void clickClose()
+        {
+            windowFilter.Close();
+        }
+
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMinimize);
+            }
+        }
+
+        public void clickMinimize()
+        {
+            windowFilter.WindowState = WindowState.Minimized;
+        }
+
+        public ICommand MaximizeCommand
+        {
+            get
+            {
+                return new Commands.DelegateCommand(clickMaximize);
+            }
+        }
+
+        public void clickMaximize()
+        {
+            if (windowFilter.Width == Screen.PrimaryScreen.WorkingArea.Width && windowFilter.Height == Screen.PrimaryScreen.WorkingArea.Height)
+            {
+                windowFilter.Width = 800;
+                windowFilter.Height = 500;
+            }
+            else
+            {
+                windowFilter.Left = windowFilter.Top = 0;
+                windowFilter.Width = Screen.PrimaryScreen.WorkingArea.Width;
+                windowFilter.Height = Screen.PrimaryScreen.WorkingArea.Height;
+            }
         }
 
         public ICommand DeleteCommand
