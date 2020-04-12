@@ -25,18 +25,20 @@ namespace EstateManager.ViewModels
         {
             var dbContext = DataAccess.EstateManagerContext.Current;
             OcMapPoints = new ObservableCollection<MapPoint>();
-            var locationList = dbContext.Transactions.Include(b => b.Estate).ToList();
-            Task t = Task.Run(() => PlacePointsAsync(locationList));
+            var locationTransacList = dbContext.Transactions.Include(b => b.Estate).ToList();
+            var locationAppList = dbContext.Appointments.ToList();
+            var locationClientsList = dbContext.Persons.ToList();
+            Task t = Task.Run(() => PlacePointsAsync(locationTransacList, locationAppList, locationClientsList));
             t.Wait();
         }
 
-        async Task PlacePointsAsync(List<Transaction> list)
+        async Task PlacePointsAsync(List<Transaction> listTransac, List<Appointment> listAppoint, List<Person> listClients)
         {
 
             IGeocoder geocoder = new BingMapsGeocoder("2nbycCL6Gzmsr7jeoLGt~i-GGspDBBqMJLETkBSB4AA~AkYmtyboWJkGoYbS734ufkxbskzYOGwHuAG79CvLt1wiYNviJBQ8EwLd2IIO9-K3");
             IEnumerable<Address> addresses = null;
 
-            foreach (var item in list)
+            foreach (var item in listTransac)
             {
                 try
                 {
@@ -57,7 +59,48 @@ namespace EstateManager.ViewModels
                 }
 
             }
+            foreach (var item in listAppoint)
+            {
+                try
+                {
+                    addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " " + item.City);
+                    OcMapPoints.Add(new MapPoint()
+                    {
+                        Latitude = addresses.First().Coordinates.Latitude,
+                        Longitude = addresses.First().Coordinates.Longitude,
+                        Name = item.Reason,
+                        Description = item.Person1.FirstName + " avec " + item.Person2.FirstName
 
+                    });
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Addresse not found");
+                }
+
+            }
+            foreach (var item in listClients)
+            {
+                try
+                {
+                    addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " " + item.City);
+                    OcMapPoints.Add(new MapPoint()
+                    {
+                        Latitude = addresses.First().Coordinates.Latitude,
+                        Longitude = addresses.First().Coordinates.Longitude,
+                        Name = item.FirstName + " " + item.LastName,
+                        Description = item.Mail
+
+                    });
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Addresse not found");
+                }
+
+            }
         }
     }
 }
