@@ -48,10 +48,6 @@ namespace EstateManager.ViewModels
             int nbPostes = 0;
             List<Models.DateModel> dates = dbContext.Transactions.GroupBy(t=>t.PublicationDate.Date , t => t.Id).Select(x => new Models.DateModel { DateTime = x.Key, Value = x.Count()}).ToList();
             
-
-
-
-            
             SeriesCol = new SeriesCollection(dayConfig)
 {
                 new LineSeries

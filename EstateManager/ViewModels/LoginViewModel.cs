@@ -52,19 +52,15 @@ namespace EstateManager.ViewModels
             {
                 var loggedUser = dbContext.Users.Where(t => t.Username == Username && t.Password == Password).First();
                 DataAccess.ConnectionContext.ConnectedUser = loggedUser;
-                
+
                 MessageBox.Show("Bien connecté !");
                 new Views.MainWindow().Show();
                 LoginWindow.Close();
             }
             catch (Exception)
             {
-                MessageBox.Show("Erreur de connection !");
+                MessageBox.Show("Erreur de connexion !");
             }
-
-
-
-
         }
 
 
@@ -78,9 +74,7 @@ namespace EstateManager.ViewModels
 
         void clickCancel()
         {
-
             LoginWindow.Close();
-
         }
     }
 }

@@ -23,8 +23,6 @@ namespace EstateManager.ViewModels
 
         public MapViewModel()
         {
-
-
             var dbContext = DataAccess.EstateManagerContext.Current;
             OcMapPoints = new ObservableCollection<MapPoint>();
             var locationList = dbContext.Transactions.Include(b => b.Estate).ToList();

@@ -15,9 +15,6 @@ using EstateManager.DataAccess;
 
 namespace EstateManager.ViewModels
 {
-
-
-
     class AppointmentViewModel
     {
 
@@ -28,8 +25,6 @@ namespace EstateManager.ViewModels
         {
             dbContext = EstateManagerContext.Current;
             Appointments = new ObservableCollection<Appointment>();
-            if (dbContext.Appointments.Count() == 0)
-                initAppointments();
             loadAppointments(DateTime.Now);
         }
 
@@ -46,24 +41,6 @@ namespace EstateManager.ViewModels
             {
                 Appointments.Add(a);
             }
-        }
-
-        private void initAppointments()
-        {
-            MessageBox.Show("J'init aléatoirement des RDV !");
-            Random rnd = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                DateTime temp = DateTime.Now.AddDays(rnd.Next(-5, 5));
-                dbContext.Appointments.Add(new Appointment
-                {
-                    Date = temp,
-                    Reason = "Ma date est le " + temp,
-                    Person1Id = rnd.Next(1, 10),
-                    Person2Id = rnd.Next(1, 10)
-                }); ;
-            }
-            dbContext.SaveChanges();
         }
 
         /*public ICommand clickDayCommand

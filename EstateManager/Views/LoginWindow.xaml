@@ -66,7 +66,7 @@
                 </Button.Resources>
             </Button>
         </Grid>
-        <TextBlock Text="Login" Grid.Column="0" Grid.Row="0" FontSize="16" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,4" Height="22" Width="39"/>
+        <TextBlock Text="   Login" Grid.Column="0" Grid.Row="0" FontSize="16" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,4" Height="22" Width="62"/>
 
 
 

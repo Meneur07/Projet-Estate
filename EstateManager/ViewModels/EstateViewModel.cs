@@ -53,11 +53,6 @@ namespace EstateManager.ViewModels
                 }
         }
 
-
-
-
-
-
         public ObservableCollection<Transaction> Transactions
         {
             get { return GetProperty<ObservableCollection<Transaction>>(); }

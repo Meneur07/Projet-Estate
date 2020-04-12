@@ -104,9 +104,6 @@ namespace EstateManager.ViewModels
             loadFields(idEstate);
         }
 
-
-
-
         public ICommand ModifyCommand
         {
             get

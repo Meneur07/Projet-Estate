@@ -18,56 +18,11 @@ namespace EstateManager.ViewModels
         private Window Parent;
 
         public static ObservableCollection<Person> People { get; set; }
-        Random r = new Random();
-
-        private Person GeneratePerson()
-        {
-            string[] arrayNames = { "Jean", "Paule", "Pierre", "Jacqueline", "Michel", "David", "Léo", "Claudette", "Cloé", "Gertrude" };
-
-            string firstName = arrayNames[r.Next(arrayNames.Length)];
-            string lastName = arrayNames[r.Next(arrayNames.Length)];
-            string cellPhone = "";
-            string mail = firstName + "." + lastName + "@truc.fr";
-            string Adress = r.Next(0, 200) + " rue du " + lastName;
-            string ZipCode = "";
-            string city = lastName + firstName;
-
-            for (int j = 0; j < 5; j++)
-            {
-                ZipCode += r.Next(0, 10);
-            }
-            for (int j = 0; j < 10; j++)
-            {
-                cellPhone += r.Next(0, 10);
-            }
-
-
-            return new Person()
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                ZipCode = ZipCode,
-                Address = Adress,
-                City = city,
-                CellPhone = cellPhone
-            };
-
-
-        }
+        
         public AddTransacViewModel(Window parent)
         {
             Parent = parent;
             People = new ObservableCollection<Person>(dbContext.Persons.ToList());
-            if (People.Count != 0)
-                return;
-
-            for (int i = 0; i < 10; i++)
-            {
-                Person toAdd = GeneratePerson();
-                dbContext.Add(toAdd);
-            }
-            MessageBox.Show("J'ai généré 10 personnes aléatoirement !");
-            dbContext.SaveChanges();
         }
 
 
