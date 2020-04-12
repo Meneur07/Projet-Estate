@@ -264,17 +264,9 @@
     </ApplicationDefinition>
     <Compile Include="Converters\ByteArrayToBitmapImageConverter.cs" />
     <Compile Include="DataAccess\ConnectionContext.cs" />
-    <Compile Include="Migrations\20200408063226_appoint.cs" />
-    <Compile Include="Migrations\20200408063226_appoint.designer.cs">
-      <DependentUpon>20200408063226_appoint.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200408074039_Typ.cs" />
-    <Compile Include="Migrations\20200408074039_Typ.designer.cs">
-      <DependentUpon>20200408074039_Typ.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200408093219_log.cs" />
-    <Compile Include="Migrations\20200408093219_log.designer.cs">
-      <DependentUpon>20200408093219_log.cs</DependentUpon>
+    <Compile Include="Migrations\20200412142805_init.cs" />
+    <Compile Include="Migrations\20200412142805_init.designer.cs">
+      <DependentUpon>20200412142805_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EstateManagerContextModelSnapshot.cs" />
     <Compile Include="Models\Appointment.cs" />

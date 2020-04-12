@@ -107,6 +107,8 @@ namespace EstateManager.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Password = table.Column<string>(nullable: true),
+                    Type = table.Column<int>(nullable: false),
+                    Username = table.Column<string>(nullable: true),
                     PersonId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

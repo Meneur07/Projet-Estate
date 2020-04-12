@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-    [Migration("20200408074039_Typ")]
-    partial class Typ
+    [Migration("20200412142805_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -252,6 +252,9 @@ namespace EstateManager.Migrations
 
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

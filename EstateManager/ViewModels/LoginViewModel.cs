@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace EstateManager.ViewModels
@@ -27,33 +28,31 @@ namespace EstateManager.ViewModels
             LoginWindow = win;
         }
 
-        public String Password
-        {
-            get { return GetProperty<String>(); }
-            set { SetProperty<String>(value); }
-        }
 
         public ICommand Login
         {
             get
             {
-                return new Commands.DelegateCommand(clickLogin);
+                return new Commands.DelegateCommand<PasswordBox>(clickLogin);
             }
         }
 
-        void clickLogin()
+        void clickLogin(PasswordBox pbox)
         {
-            if (Username == null || Password == null)
+            if (Username == null || pbox.Password == null)
                 return;
 
             var dbContext = DataAccess.EstateManagerContext.Current;
+            
 
             try
             {
-                var loggedUser = dbContext.Users.Where(t => t.Username == Username && t.Password == Password).First();
+
+                var loggedUser = dbContext.Users.Where(t => t.Username == Username && t.Password == pbox.Password).First();
                 DataAccess.ConnectionContext.ConnectedUser = loggedUser;
-                
-                MessageBox.Show("Bien connecté !");
+
+
+                MessageBox.Show("Bien connecté " + Username +" !");
                 new Views.MainWindow().Show();
                 LoginWindow.Close();
             }
