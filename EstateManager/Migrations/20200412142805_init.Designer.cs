@@ -9,11 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstateManager.Migrations
 {
     [DbContext(typeof(EstateManagerContext))]
-<<<<<<< HEAD:EstateManager/Migrations/20200412143122_init.Designer.cs
     [Migration("20200412143122_init")]
-=======
-    [Migration("20200412142805_init")]
->>>>>>> 21e8e7ebbaa1321021cb04b18ba4492fd453055f:EstateManager/Migrations/20200412142805_init.Designer.cs
+    //[Migration("20200412142805_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

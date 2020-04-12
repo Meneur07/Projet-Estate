@@ -264,6 +264,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\ByteArrayToBitmapImageConverter.cs" />
     <Compile Include="DataAccess\ConnectionContext.cs" />
+    <Compile Include="DataAccess\SampleDataCreator.cs" />
     <Compile Include="Migrations\20200412142805_init.cs" />
     <Compile Include="Migrations\20200412142805_init.designer.cs">
       <DependentUpon>20200412142805_init.cs</DependentUpon>
