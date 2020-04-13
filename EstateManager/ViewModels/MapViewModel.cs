@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace EstateManager.ViewModels
 {
@@ -18,6 +19,9 @@ namespace EstateManager.ViewModels
             get { return GetProperty<ObservableCollection<MapPoint>>(); }
             set { SetProperty<ObservableCollection<MapPoint>>(value); }
         }
+
+
+
 
         public MapViewModel()
         {
@@ -39,6 +43,7 @@ namespace EstateManager.ViewModels
             {
                 try
                 {
+
                     addresses = await geocoder.GeocodeAsync(item.Estate.Address + " " + item.Estate.ZipCode + " " + item.Estate.City);
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -46,7 +51,7 @@ namespace EstateManager.ViewModels
                         {
                             Latitude = addresses.First().Coordinates.Latitude,
                             Longitude = addresses.First().Coordinates.Longitude,
-                            Name = item.Title,
+                            Name = "Transaction : " + item.Title,
                             Description = item.Description
 
                         });
@@ -61,6 +66,7 @@ namespace EstateManager.ViewModels
             {
                 try
                 {
+
                     addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " " + item.City);
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -68,7 +74,7 @@ namespace EstateManager.ViewModels
                         {
                             Latitude = addresses.First().Coordinates.Latitude,
                             Longitude = addresses.First().Coordinates.Longitude,
-                            Name = item.Reason,
+                            Name = "Appointnment : " + item.Reason,
                             Description = item.Person1.FirstName + " avec " + item.Person2.FirstName
 
                         });
@@ -83,6 +89,7 @@ namespace EstateManager.ViewModels
             {
                 try
                 {
+
                     addresses = await geocoder.GeocodeAsync(item.Address + " " + item.ZipCode + " " + item.City);
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -90,7 +97,7 @@ namespace EstateManager.ViewModels
                         {
                             Latitude = addresses.First().Coordinates.Latitude,
                             Longitude = addresses.First().Coordinates.Longitude,
-                            Name = item.FirstName + " " + item.LastName,
+                            Name = "Person : " + item.FirstName + " " + item.LastName,
                             Description = item.Mail
                         });
                     });

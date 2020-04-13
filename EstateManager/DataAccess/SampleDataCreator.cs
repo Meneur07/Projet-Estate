@@ -77,7 +77,8 @@ namespace EstateManager.DataAccess
                     Date = temp,
                     Reason = "Reason : ma date est le " + temp,
                     Person1Id = rnd.Next(1, 10),
-                    Person2Id = rnd.Next(1, 10)
+                    Person2Id = rnd.Next(1, 10),
+               
                 }); ;
             }
             dbContext.SaveChanges();

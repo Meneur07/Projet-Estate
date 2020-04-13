@@ -15,7 +15,6 @@
                 <WPF:MapItemsControl.ItemTemplate>
                     <DataTemplate>
                         <WPF:Pushpin Background="Red" Location="{Binding location}">
-
                             <ToolTipService.ToolTip>
                                 <ToolTip Style="{StaticResource InfoBoxToolTip}"/>
                             </ToolTipService.ToolTip>
